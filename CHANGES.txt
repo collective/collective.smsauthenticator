@@ -1,0 +1,9 @@
+Changelog
+================================================
+
+0.1
+------------------------------------------------
+28-02-2014
+
+- Initial release, with two-step verification, IP white-listing, configurable lifetime for the login
+  codes, mobile number recover and app control panel.

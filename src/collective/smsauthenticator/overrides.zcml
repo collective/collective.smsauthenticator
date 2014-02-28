@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.smsauthenticator">
+
+    <adapter
+      provides=".userdataschema.IEnhancedUserDataSchema"
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      factory=".adapter.EnhancedUserDataPanelAdapter"
+      />
+
+</configure>

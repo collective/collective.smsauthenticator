@@ -1,0 +1,124 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.smsauthenticator">
+
+    <i18n:registerTranslations directory="../locales" />
+    
+    <browser:resourceDirectory
+        name="collective.smsauthenticator"
+        directory="static"
+        />
+
+    <!-- Disable two-step verification -->
+    <browser:page
+        name="disable-two-step-verification"
+        class=".disable_two_step_verification.DisableTwoStepVerification"
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        attribute="disable"
+        permission="zope2.View"
+        />
+
+    <!-- -*- token validation form -*- -->
+    <browser:page
+        name="sms-authenticator-token"
+        for="*"
+        permission="zope2.View"
+        class=".forms.token.TokenFormView"
+        />
+
+    <!-- -*- Request mobile number reset -*- -->
+    <browser:page
+        name="request-mobile-number-reset"
+        for="*"
+        permission="zope2.View"
+        class=".forms.request_mobile_number_reset.RequestMobileNumberResetFormView"
+        />
+
+    <!-- -*- Reset mobile number -*- -->
+    <browser:page
+        name="reset-mobile-number"
+        for="*"
+        permission="zope2.View"
+        class=".forms.reset_mobile_number.ResetMobileNumberFormView"
+        />
+
+    <!-- -*- setup form -*- -->
+    <browser:page
+        name="setup-mobile-number"
+        for="*"
+        permission="zope2.View"
+        class=".forms.user_setup_mobile_number.SetupMobileNumberFormView"
+        />
+
+    <!-- -*- setup form -*- -->
+    <browser:page
+        name="setup-two-step-verification"
+        for="*"
+        permission="zope2.View"
+        class=".forms.user_setup_two_step_verification.SetupTwoStepVerificationFormView"
+        />
+
+    <!-- Control panel -->
+    <browser:page
+        name="sms-authenticator-settings"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.SMSAuthenticatorSettingsControlPanel"
+        permission="cmf.ManagePortal"
+        />
+
+    <!-- Control panel helper -->
+    <browser:page
+        name="sms-authenticator-enable-for-all-users"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".enable_two_step_verification_for_all_users.EnableTwoStepVerificationForAllUsers"
+        attribute="index"
+        permission="cmf.ManagePortal"
+        />
+
+    <!-- Control panel helper -->
+    <browser:page
+        name="sms-authenticator-disable-for-all-users"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".disable_two_step_verification_for_all_users.DisableTwoStepVerificationForAllUsers"
+        attribute="index"
+        permission="cmf.ManagePortal"
+        />
+
+    <!-- -*- additional helper view for checking the global settings -*- -->
+    <browser:page
+        name="is-two-step-verification-globally-enabled"
+        class=".settings_helper.SettingsHelper"
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        attribute="is_two_step_verification_globally_enabled"
+        permission="zope2.View"
+        />
+
+    <!-- -*- additional helper view for checking the if enable two-step verification link should be shown -*- -->
+    <browser:page
+        name="show-enable-two-step-verification-link"
+        class=".settings_helper.SettingsHelper"
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        attribute="show_enable_two_step_verification_link"
+        permission="zope2.View"
+        />
+
+    <!-- -*- additional helper view for checking the if disable two-step verification link should be shown -*- -->
+    <browser:page
+        name="show-disable-two-step-verification-link"
+        class=".settings_helper.SettingsHelper"
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        attribute="show_disable_two_step_verification_link"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="Products.CMFPlone.Portal.PloneSite"
+        name="personal-information"
+        class="collective.smsauthenticator.userdataschema.CustomizedUserDataPanel"
+        permission="cmf.SetOwnProperties"
+        layer="collective.smsauthenticator.interfaces.ISMSAuthenticatorLayer"
+        />
+
+</configure>

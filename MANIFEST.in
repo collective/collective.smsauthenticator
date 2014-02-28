@@ -1,0 +1,14 @@
+include CHANGES.txt
+include CONTRIBUTORS.txt
+include README.rst
+include TODOS.rst
+recursive-include src *.zcml, *.pot, *.po, *.css, *.js, *.xml, *.txt, *.cpt, *.pt, *.metadata, *.zpt, *.sh
+recursive-include src/collective/smsauthenticator/locales/nl *
+recursive-include src/collective/smsauthenticator/skins/smsauthenticator_custom *
+recursive-include src/collective/smsauthenticator/profiles/default *
+recursive-include src/collective/smsauthenticator/profiles/uninstall *
+recursive-include src/collective/smsauthenticator/browser/static *
+recursive-include src/collective/smsauthenticator/www *
+include src/collective/smsauthenticator/configure.zcml
+include src/collective/smsauthenticator/overrides.zcml
+include src/collective/smsauthenticator/browser/configure.zcml

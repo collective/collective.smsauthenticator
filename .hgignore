@@ -1,0 +1,16 @@
+syntax: regexp
+\.pyc$
+\.hgignore~
+\.gitignore~
+\.git/
+\.tox/
+\.travis\.yml~
+
+^MANIFEST\.in~
+^tmp/
+\.zip
+^builddocs/
+^builddocs.zip
+^build/
+^dist/
+^src/collective.smsauthenticator\.egg-info

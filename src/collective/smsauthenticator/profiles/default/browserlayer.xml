@@ -1,0 +1,6 @@
+<layers>
+    <layer
+        name="collective.smsauthenticator"
+         interface="collective.smsauthenticator.interfaces.ISMSAuthenticatorLayer"
+         />
+</layers>

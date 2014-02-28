@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file holds the setup configuration for the portal_css tool. -->
+
+<object name="portal_css">
+
+    <stylesheet title=""
+                id="++resource++collective.smsauthenticator/main.css"
+                media="screen" rel="stylesheet" rendering="import"
+                cacheable="True" compression="safe" cookable="True"
+                enabled="1" expression=""/>
+
+</object>

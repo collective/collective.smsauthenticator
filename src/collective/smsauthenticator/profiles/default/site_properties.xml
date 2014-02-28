@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="site_properties" meta_type="Plone Property Sheet">
+  <!-- Fields that will be on the form after installation of the product -->
+  <property name="user_registration_fields" type="lines">
+   <element value="enable_two_step_verification" />
+  </property>
+ </object>
+</object>

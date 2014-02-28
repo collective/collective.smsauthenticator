@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_memberdata" meta_type="Plone Memberdata Tool">
+  <property name="enable_two_step_verification" type="boolean">False</property>
+  <property name="mobile_number" type="string"></property>
+  <property name="two_step_verification_secret" type="string"></property>
+  <property name="mobile_number_reset_token" type="string"></property>
+  <property name="mobile_number_reset_code" type="string"></property>
+  <property name="mobile_number_authentication_code" type="string"></property>
+</object>

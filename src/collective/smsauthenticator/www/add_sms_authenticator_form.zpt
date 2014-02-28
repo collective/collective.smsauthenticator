@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal">
+  <body>
+    <h1 tal:replace="structure here/manage_page_header">Header</h1>
+
+    <h2 tal:define="form_title string:Add SMS Authenticator PAS plugin"
+        tal:replace="structure here/manage_form_title">Collective SMS Authenticator PAS plugin</h2>
+
+    <p class="form-help">
+      The SMS Authenticator PAS plugin adds support for two-step verification using SMS Authenticator.
+    </p>
+    <form action="addSMSAuthenticatorPlugin" method="post">
+      <table>
+        <tr>
+          <td class="form-label">Id</td>
+          <td><input type="text" name="id"/></td>
+        </tr>
+        <tr>
+          <td class="form-label">Title</td>
+          <td><input type="text" name="title"/></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div class="form-element">
+              <input type="submit" value="add SMS Authenticator PAS plugin"/>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
