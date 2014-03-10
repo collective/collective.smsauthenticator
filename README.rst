@@ -224,7 +224,7 @@ GPL 2.0
 
 Authors & Copyright
 ================================================
-Copyright (C) 2014 `Goldmund, Wyldebeast & Wunderliebe <http://www.goldmund-wyldebeast-wunderliebe.com/>`_.
+Copyright (C) 2014 `Goldmund, Wyldebeast & Wunderliebe <http://www.goldmund-wyldebeast-wunderliebe.nl/>`_.
 
 Authors listed in alphabetic order (by name):
 
