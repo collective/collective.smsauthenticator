@@ -154,7 +154,7 @@ class RequestMobileNumberResetForm(form.SchemaForm):
                     _("An email with instructions on resetting your mobile number is sent successfully."),
                     'info'
                     )
-                redirect_url = "{0}".format(self.context.absolute_url())
+                redirect_url = "{0}/login_form".format(self.context.absolute_url())
                 self.request.response.redirect(redirect_url)
             except ValueError as e:
                 reason = _(str(e))
