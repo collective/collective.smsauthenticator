@@ -126,6 +126,11 @@ class ResetMobileNumberForm(form.SchemaForm):
                     'info'
                     )
                 redirect_url = "{0}".format(self.context.absolute_url())
+
+                # Logging user in
+                self.context.acl_users.session._setupSession(username, self.request.response)
+
+                # Redirect user to home
                 self.request.response.redirect(redirect_url)
             except Exception as e:
                 reason = _(str(e))

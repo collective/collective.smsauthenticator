@@ -9,6 +9,8 @@ verification code received by SMS. Upon successful validation, the mobile number
 import logging
 from smtplib import SMTPRecipientsRefused
 
+from six import text_type
+
 from zope.i18nmessageid import MessageFactory
 from zope.schema import TextLine
 from z3c.form import button, field
@@ -171,6 +173,11 @@ class RequestMobileNumberResetForm(form.SchemaForm):
         request = self.request
         response = request['RESPONSE']
         response.setCookie('__ac', '', path='/')
+
+        # Setting the value from get "username" value if available.
+        username_field = self.fields.get('username')
+        if request.get('username'):
+            username_field.field.default = text_type(request.get('username'))
 
         return super(RequestMobileNumberResetForm, self).updateFields(*args, **kwargs)
 

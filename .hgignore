@@ -9,6 +9,10 @@ syntax: regexp
 ^MANIFEST\.in~
 ^tmp/
 \.zip
+^bin/
+^parts/
+^develop\-eggs/
+^\.installed\.cfg
 ^builddocs/
 ^builddocs.zip
 ^build/

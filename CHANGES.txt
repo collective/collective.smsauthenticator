@@ -1,9 +1,17 @@
 Changelog
 ================================================
+0.2
+------------------------------------------------
+2014-03-10
+
+- Taking out an extra step with logging in for the first time. Instead, logging it
+  the user after the confirmation of the mobile.
+- Having the username filled in setting up the mobile number for the first time, since
+  at that point it's already known.
 
 0.1
 ------------------------------------------------
-28-02-2014
+2014-02-28
 
 - Initial release, with two-step verification, IP white-listing, configurable lifetime for the login
   codes, mobile number recover and app control panel.

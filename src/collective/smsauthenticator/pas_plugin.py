@@ -133,7 +133,7 @@ class SMSAuthenticatorPlugin(BasePlugin):
                       "a mobile number yet! In order to be able to log in, you have to go through mobile "
                       "number recovery procedure first."), 'warning'
                     )
-                response.redirect('@@request-mobile-number-reset', lock=1)
+                response.redirect('@@request-mobile-number-reset/?username={0}'.format(login), lock=1)
                 return None
 
             # If code was not yet sent, generate a code and send an SMS.

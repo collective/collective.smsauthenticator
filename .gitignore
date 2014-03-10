@@ -23,6 +23,7 @@ lib64
 .hgignore~
 .hg/
 .hgtags
+buildout-sphinx.cfg
 
 # Installer logs
 pip-log.txt
