@@ -204,7 +204,7 @@ It's important that SMS Authenticator comes as first in the ZMI -> acl_users -> 
 
 Tested in combination with the following products:
 
-- The `Products.LoginLockout` <https://pypi.python.org/pypi/Products.LoginLockout>_. 
+- The `Products.LoginLockout <https://pypi.python.org/pypi/Products.LoginLockout>`_. 
   `smsauthenticator` comes as first, `LoginLockout` as second. All works fine.
 
 Documentation
