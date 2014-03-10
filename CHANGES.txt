@@ -4,7 +4,7 @@ Changelog
 ------------------------------------------------
 2014-03-10
 
-- Fixed lost info message on mobile number (re)set.
+- Fixed lost Plone info status message on mobile number (re)set.
 
 0.2.1
 ------------------------------------------------
