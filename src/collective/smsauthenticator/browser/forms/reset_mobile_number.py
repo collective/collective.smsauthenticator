@@ -122,7 +122,8 @@ class ResetMobileNumberForm(form.SchemaForm):
                     )
 
                 IStatusMessage(self.request).addStatusMessage(
-                    _("Two-step verification mobile number is successfully reset for your account."),
+                    _("Two-step verification mobile number is successfully (re)set for your account. "
+                      "You're now logged in."),
                     'info'
                     )
                 redirect_url = "{0}".format(self.context.absolute_url())
