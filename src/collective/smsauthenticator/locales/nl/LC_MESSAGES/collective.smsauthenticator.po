@@ -25,7 +25,7 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: collective.smsauthenticator\n"
 "Generated-By: zope/app/locales/extract.py\n"
 "Language: nl\n"
 
@@ -98,7 +98,7 @@ msgid "Enable two-step verification."
 msgstr "Schakel twee-stap verificatie in."
 
 #: ./userdataschema.py:66
-msgid "Enable/disable the two-step verification. Click <a href="@@setup-mobile-number">here</a> to set it up or <a href="@@disable-two-step-verification">here</a> to disable it."
+msgid 'Enable/disable the two-step verification. Click <a href="@@setup-mobile-number">here</a> to set it up or <a href="@@disable-two-step-verification">here</a> to disable it.'
 msgstr ""
 
 #: ./browser/forms/token.py:33
@@ -106,7 +106,7 @@ msgid "Enter code"
 msgstr "Type de in code"
 
 #: ./browser/forms/token.py:128
-msgid "Enter the login code sent to your mobile number If you have somehow lost your bar code, request a mobile number reset <a href="{0}/@@request-mobile-number-reset">here</a>."
+msgid 'Enter the login code sent to your mobile number If you have somehow lost your bar code, request a mobile number reset <a href="{0}/@@request-mobile-number-reset">here</a>.'
 msgstr ""
 
 #: ./browser/forms/token.py:34
@@ -143,7 +143,7 @@ msgstr ""
 
 #: ./browser/controlpanel.py:82
 msgid "Enter your secret key for the site here. When choosing a secret key, think of it as some sort of a password."
-msgstr "Vul hier je geheime sleutel voor de site. Bij het kiezen van een geheime sleutel, zie het als een soort van een wachtwoord."
+msgstr "Vul hier de geheime sleutel voor de site. Bij het kiezen van een geheime sleutel, zie het als een soort van een wachtwoord."
 
 #: ./browser/forms/request_mobile_number_reset.py:41
 msgid "Enter your username for verification. The link code to reset the mobile number would be sent to your email."
@@ -158,10 +158,6 @@ msgstr ""
 #: ./browser/controlpanel.py:30
 msgid "Globally enabled"
 msgstr ""
-
-#: ./browser/forms/token.py:107
-msgid "Great! You're logged in."
-msgstr "Geweldig! Je bent ingelogd."
 
 #: ./browser/controlpanel.py:31
 msgid "If checked, globally enables the two-step verification for all users; otherwise - each user configures it himself. Note, that unchecking the checkbox does not disable the two-step verification for all users."
