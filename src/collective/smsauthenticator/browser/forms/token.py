@@ -24,6 +24,7 @@ logger = logging.getLogger('collective.smsauthenticator')
 DEBUG = False
 
 _ = MessageFactory('collective.smsauthenticator')
+from Products.CMFPlone import PloneMessageFactory as __
 
 class ITokenForm(form.Schema):
     """
@@ -104,7 +105,7 @@ class TokenForm(form.SchemaForm):
                 )
 
             # TODO: Is there a nicer way of resolving the "@@sms_authenticator_token_form" URL?
-            IStatusMessage(self.request).addStatusMessage(_("Great! You're logged in."), 'info')
+            IStatusMessage(self.request).addStatusMessage(__("Welcome! You are now logged in."), 'info')
             request_data = extract_request_data(self.request)
             redirect_url = request_data.get('next_url', self.context.absolute_url())
             self.request.response.redirect(redirect_url)
