@@ -129,7 +129,7 @@ ZMI -> acl_users
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1. Choose "sms_auth (SMS Authenticator plugin (collective.smsauthenticator))".
 
-2. Make sure the "Active plugins" section of "Authentication" has the following plugins in 
+2. Make sure the "Active plugins" section of "Authentication" has the following plugins in
    the given order ("sms_auth" should come as first - critical!):
 
     - sms_auth
@@ -204,8 +204,8 @@ It's important that SMS Authenticator comes as first in the ZMI -> acl_users -> 
 
 Tested in combination with the following products:
 
-- The `Products.LoginLockout` <https://pypi.python.org/pypi/Products.LoginLockout>_. 
-  `smsauthenticator` comes as first, `LoginLockout` as second. All works fine.
+- The `Products.LoginLockout <https://pypi.python.org/pypi/Products.LoginLockout>`_.
+  `SMSAuthenticator` comes as first, `LoginLockout` as second. All works fine.
 
 Documentation
 ================================================
@@ -224,7 +224,7 @@ GPL 2.0
 
 Authors & Copyright
 ================================================
-Copyright (C) 2014 `Goldmund, Wyldebeast & Wunderliebe <http://www.goldmund-wyldebeast-wunderliebe.com/>`_.
+Copyright (C) 2014 `Goldmund, Wyldebeast & Wunderliebe <http://www.goldmund-wyldebeast-wunderliebe.nl/>`_.
 
 Authors listed in alphabetic order (by name):
 
@@ -235,3 +235,4 @@ TODOs and Roadmap
 ================================================
 See `TODOS.rst <https://raw.github.com/collective/collective.smsauthenticator/master/TODOS.rst>`_
 file for the list of TODOs.
+
