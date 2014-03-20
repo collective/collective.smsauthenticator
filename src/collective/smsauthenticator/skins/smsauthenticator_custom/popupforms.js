@@ -57,15 +57,16 @@ jQuery(function($){
         return;
     }
 
-    /* Temporary disabled, as doesn't work with SMS Authenticator app.
+    // Temporary disabled, as doesn't work with SMS Authenticator app.
     // login form
     $('#portal-personaltools a[href$="/login"], #portal-personaltools a[href$="/login_form"], .discussion a[href$="/login"], .discussion a[href$="/login_form"]').prepOverlay(
         {
             subtype: 'ajax',
             filter: common_content_filter,
-            formselector: 'form#login_form',
+            formselector: 'form#login_form, form.kssattr-formname-request-mobile-number-reset, form.kssattr-formname-sms-authenticator-token',
             cssclass: 'overlay-login',
             noform: function () {
+                console.log("Noform!")
                 if (location.href.search(/pwreset_finish$/) >= 0) {
                     return 'redirect';
                 } else {
@@ -73,6 +74,7 @@ jQuery(function($){
                 }
             },
             redirect: function () {
+                console.log("redirect!")
                 var href = location.href;
                 if (href.search(/pwreset_finish$/) >= 0) {
                     return href.slice(0, href.length-14) + 'logged_in';
@@ -82,7 +84,7 @@ jQuery(function($){
             }
         }
     );
-    */
+    
 
     // contact form
     $('#siteaction-contact a').prepOverlay(
