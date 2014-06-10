@@ -7,6 +7,7 @@ from urllib import unquote, quote
 from urlparse import urlparse
 import logging
 from random import randint
+import time
 
 from zope.component import getUtility
 from zope.globalrequest import getRequest
@@ -531,3 +532,32 @@ def send_mobile_number_setup_confirmation_code_sms(mobile_number, code):
     """
     message = _("Use this code to confirm your mobile phone setup: {0}".format(code))
     return send_sms(mobile_number, message)
+
+def get_updated_ips_for_member_properties_update(user, request=None):
+    """
+    Save IP, from which user is logged in, into the system.
+
+    :param Products.PlonePAS.tools.memberdata user:
+    :param ZPublisher.HTTPRequest request:
+    :return bool: True on success and False on failure.
+    """
+    ip = extract_ip_address_from_request(request)
+    existing_ips = user.getProperty('ips')
+    updated_ips = "{0}\n{1},{2}".format(existing_ips, ip, time.time())
+    return {'ips': updated_ips}
+
+def save_ip(user, request=None):
+    """
+    Save IP, from which user is logged in, into the system.
+
+    :param Products.PlonePAS.tools.memberdata user:
+    :param ZPublisher.HTTPRequest request:
+    :return bool: True on success and False on failure.
+    """
+    mapping = get_updated_ips_for_member_properties_update(user=user, request=request)
+
+    try:
+        user.setMemberProperties(mapping=mapping)
+        return True
+    except Exception as e:
+        return False

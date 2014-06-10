@@ -16,7 +16,8 @@ from plone.z3cform.layout import wrap_form
 from Products.statusmessages.interfaces import IStatusMessage
 
 from collective.smsauthenticator.helpers import (
-    validate_mobile_number_authentication_code, validate_user_data, extract_request_data
+    validate_mobile_number_authentication_code, validate_user_data, extract_request_data,
+    get_updated_ips_for_member_properties_update
     )
 
 logger = logging.getLogger('collective.smsauthenticator')
@@ -97,12 +98,11 @@ class TokenForm(form.SchemaForm):
             # We should login the user here
             self.context.acl_users.session._setupSession(str(username), self.context.REQUEST.RESPONSE)
 
-            # Remove used authentication code
-            user.setMemberProperties(
-                mapping = {
-                    'mobile_number_authentication_code': '',
-                    }
-                )
+            mapping = {'mobile_number_authentication_code': '',}
+            mapping.update(get_updated_ips_for_member_properties_update(user))
+
+            # Remove used authentication code and update the IPs list
+            user.setMemberProperties(mapping=mapping)
 
             # TODO: Is there a nicer way of resolving the "@@sms_authenticator_token_form" URL?
             IStatusMessage(self.request).addStatusMessage(__("Welcome! You are now logged in."), 'info')

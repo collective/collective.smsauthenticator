@@ -3,7 +3,7 @@ import logging
 from plone import api
 
 from zope.component import adapter
-from zope.schema import Bool, TextLine
+from zope.schema import Bool, TextLine, Text
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
 
@@ -32,6 +32,7 @@ class CustomizedUserDataPanel(UserDataPanel):
             'mobile_number_reset_token',
             'mobile_number_reset_code',
             'mobile_number_authentication_code',
+            'ips',
             #'authentication_token_valid_until',
             )
 
@@ -97,6 +98,12 @@ class IEnhancedUserDataSchema(IUserDataSchema):
     mobile_number_authentication_code = TextLine(
         title = _('Last authentication code'),
         description = _('Automatically generated each time SMS message is sent'),
+        required = False,
+    )
+
+    ips = Text(
+        title = _('List of IPs user logged from'),
+        description = _('Automatically generated each time user logs in'),
         required = False,
     )
 
