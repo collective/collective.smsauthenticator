@@ -85,7 +85,7 @@ class ListUserIPs(BrowserView):
         users = api.user.get_users()
         ips = set()
         for user in users:
-            ips.update(self._get_user_unique_ips(user, with_username=True))
+            ips.update(self._get_user_unique_ips(user, with_username=False))
 
         template = self.context.restrictedTraverse('show_unique_user_ips')
         rendered_template = template(

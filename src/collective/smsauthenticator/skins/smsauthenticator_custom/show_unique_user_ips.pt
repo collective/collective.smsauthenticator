@@ -13,8 +13,7 @@
             tal:condition="ips"
             tal:repeat="ip ips">
             <tr>
-                <td tal:content="python:ip[0]" />
-                <td tal:content="python:ip[1]" />
+                <td tal:content="ip" />
             </tr>
         </table>
         </tal:root>
