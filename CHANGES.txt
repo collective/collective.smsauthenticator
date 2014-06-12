@@ -1,5 +1,11 @@
 Changelog
 ================================================
+0.3
+------------------------------------------------
+--Yet unreleased--
+
+- Adding admin helper views for viewing IPs users have been using when logging in.
+
 0.2.4
 ------------------------------------------------
 2014-05-08

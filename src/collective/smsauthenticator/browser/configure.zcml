@@ -95,6 +95,15 @@
         permission="cmf.ManagePortal"
         />
 
+    <!-- Control panel helper -->
+    <browser:page
+        name="sms-authenticator-show-all-user-ips"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".list_user_ips.ListUserIPs"
+        attribute="all"
+        permission="cmf.ManagePortal"
+        />
+
     <!-- -*- additional helper view for checking the global settings -*- -->
     <browser:page
         name="is-two-step-verification-globally-enabled"
