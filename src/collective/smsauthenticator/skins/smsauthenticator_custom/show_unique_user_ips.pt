@@ -1,21 +1,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
-      metal:use-macro="here/main_template/macros/master"
+      metal:use-macro="context/prefs_main_template/macros/master"
       i18n:domain="plone">
 
 <body>
-    <metal:main fill-slot="main">
+    <metal:main fill-slot="prefs_configlet_main">
         <tal:root define="lt string:&lt;;
                   gt string:&gt;;
                   ips python:options['ips'];"
                   >
-        <table class="all-ips"
-            tal:condition="ips"
-            tal:repeat="ip ips">
-            <tr>
-                <td tal:content="ip" />
-            </tr>
-        </table>
+            <a id="setup-link" tal:attributes="href python:options['settings_url']" tal:content="python:options['settings_text']">
+                SMS Authenticator configuration
+            </a>
+            <h1 class="documentFirstHeading" i18n:translate="">SMS Authenticator</h1>
+            <!--<div class="documentDescription" i18n:translate="">Unique user IPs</div>-->
+            <div id="content-core">
+                <p class="discret" i18n:translate="">Unique user IPs</p>
+                <table class="sms-authenticator-ips-list">
+                    <thead>
+                        <tr>
+                            <th i18n:translate="">IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tal:condition="ips"
+                            tal:repeat="ip ips">
+                            <td tal:content="ip" />
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </tal:root>
     </metal:main>
 

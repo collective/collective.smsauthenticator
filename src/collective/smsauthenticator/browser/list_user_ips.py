@@ -6,6 +6,8 @@ from plone import api
 
 from Products.Five import BrowserView
 
+from collective.smsauthenticator.browser.helpers import get_app_links
+
 _ = MessageFactory('collective.smsauthenticator')
 
 class ListUserIPs(BrowserView):
@@ -88,10 +90,12 @@ class ListUserIPs(BrowserView):
             ips.update(self._get_user_unique_ips(user, with_username=False))
 
         template = self.context.restrictedTraverse('show_unique_user_ips')
-        rendered_template = template(
-            ips = ips,
-            charset = 'utf-8'
-            )
+        template_context = get_app_links(self.context)
+        template_context.update({
+            'ips': ips,
+            'charset': 'utf-8'
+        })
+        rendered_template = template(**template_context)
 
         return rendered_template
 
@@ -105,9 +109,11 @@ class ListUserIPs(BrowserView):
             ips += self._get_user_ips(user, with_username=True)
 
         template = self.context.restrictedTraverse('show_all_user_ips')
-        rendered_template = template(
-            ips = ips,
-            charset = 'utf-8'
-            )
+        template_context = get_app_links(self.context)
+        template_context.update({
+            'ips': ips,
+            'charset': 'utf-8'
+        })
+        rendered_template = template(**template_context)
 
         return rendered_template

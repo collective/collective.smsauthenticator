@@ -2,3 +2,16 @@
 form.kssattr-formname-new-user .kssattr-fieldname-form\.enable_two_step_verification {
     display: none;
 }
+table.sms-authenticator-ips-list {
+    border-bottom: #ddd 1px solid;
+    border-right: #ddd 1px solid;
+    padding: 0;
+    margin: 0;
+}
+table.sms-authenticator-ips-list th,
+table.sms-authenticator-ips-list td {
+    border-top: #ddd 1px solid;
+    border-left: #ddd 1px solid;
+    padding: 0;
+    margin: 0;
+}

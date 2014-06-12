@@ -16,6 +16,8 @@ from z3c.form import form, button
 
 from Products.statusmessages.interfaces import IStatusMessage
 
+from collective.smsauthenticator.browser.helpers import get_app_links
+
 logger = logging.getLogger("collective.smsauthenticator")
 
 _ = MessageFactory('collective.smsauthenticator')
@@ -126,21 +128,9 @@ class SMSAuthenticatorSettingsEditForm(AutoExtensibleForm, form.EditForm):
     def render(self, *args, **kwargs):
         res = super(SMSAuthenticatorSettingsEditForm, self).render(*args, **kwargs)
         additional_template = self.context.restrictedTraverse('control_panel_extra')
-        additional = additional_template(
-            # Enable URL
-            enable_url = '{0}/{1}'.format(self.context.absolute_url(), '@@sms-authenticator-enable-for-all-users'),
-            enable_text = _("Enable two-step verification for all users"),
-            # Disable URL
-            disable_url = '{0}/{1}'.format(self.context.absolute_url(), '@@sms-authenticator-disable-for-all-users'),
-            disable_text = _("Disable two-step verification for all users"),
-            # See all IPs URL
-            show_all_user_ips_url = '{0}/{1}'.format(self.context.absolute_url(), '@@sms-authenticator-show-all-user-ips'),
-            show_all_user_ips_text = _("Show all user IPs"),
-            # See unique IPs URL
-            show_unique_user_ips_url = '{0}/{1}'.format(self.context.absolute_url(), '@@sms-authenticator-show-unique-user-ips'),
-            show_unique_user_ips_text = _("Show unique user IPs"),
-            charset = 'utf-8',
-            )
+        template_context = get_app_links(self.context)
+        template_context.update({'charset': 'utf-8'})
+        additional = additional_template(**template_context)
         return res + additional
 
     @button.buttonAndHandler(_(u"Save"), name='save')
