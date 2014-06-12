@@ -16,7 +16,7 @@ class ListUserIPs(BrowserView):
         self.context = context
         self.request = request
 
-    def _get_user_unique_ips(self, user):
+    def _get_user_unique_ips(self, user, with_username=False):
         """
         Gets unique IPs of a user.
 
@@ -33,13 +33,21 @@ class ListUserIPs(BrowserView):
                 if ip_line:
                     try:
                         ip, visit = ip_line.split(',', 2)
+                        try:
+                            visit = datetime.datetime.fromtimestamp(float(visit))
+                        except Exception as e:
+                            pass
+                        if with_username:
+                            data = (ip, user.getId())
+                        else:
+                            data = ip
                         unique_ips.add(ip)
                     except Exception as e:
                         pass
 
         return unique_ips
 
-    def _get_user_ips(self, user):
+    def _get_user_ips(self, user, with_username=False):
         """
         Gets all IPs of a user.
 
@@ -60,7 +68,11 @@ class ListUserIPs(BrowserView):
                             visit = datetime.datetime.fromtimestamp(float(visit))
                         except Exception as e:
                             pass
-                        unique_ips.append((ip, visit))
+                        if with_username:
+                            data = (ip, visit, user.getId())
+                        else:
+                            data = (ip, visit)
+                        unique_ips.append(data)
                     except Exception as e:
                         pass
 
@@ -73,8 +85,15 @@ class ListUserIPs(BrowserView):
         users = api.user.get_users()
         ips = set()
         for user in users:
-            ips.update(self._get_user_unique_ips(user))
-        return ips
+            ips.update(self._get_user_unique_ips(user, with_username=True))
+
+        template = self.context.restrictedTraverse('show_unique_user_ips')
+        rendered_template = template(
+            ips = ips,
+            charset = 'utf-8'
+            )
+
+        return rendered_template
 
     def all(self):
         """
@@ -83,5 +102,12 @@ class ListUserIPs(BrowserView):
         users = api.user.get_users()
         ips = []
         for user in users:
-            ips += self._get_user_ips(user)
-        return ips
+            ips += self._get_user_ips(user, with_username=True)
+
+        template = self.context.restrictedTraverse('show_all_user_ips')
+        rendered_template = template(
+            ips = ips,
+            charset = 'utf-8'
+            )
+
+        return rendered_template
