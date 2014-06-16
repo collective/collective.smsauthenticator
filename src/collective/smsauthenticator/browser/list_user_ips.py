@@ -26,7 +26,7 @@ class ListUserIPs(BrowserView):
         :return: Set of user unique IPs.
         """
         unique_ips = set()
-        raw_ips = user.getProperty('ips')
+        raw_ips = user.getProperty('ips', '')
 
         if raw_ips:
             all_ips = raw_ips.split('\n')
@@ -57,7 +57,7 @@ class ListUserIPs(BrowserView):
         :return: List of user IPs.
         """
         unique_ips = []
-        raw_ips = user.getProperty('ips')
+        raw_ips = user.getProperty('ips', '')
 
         if raw_ips:
             all_ips = raw_ips.split('\n')
