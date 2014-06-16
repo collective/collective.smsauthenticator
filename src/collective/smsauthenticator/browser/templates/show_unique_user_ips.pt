@@ -7,9 +7,10 @@
     <metal:main fill-slot="prefs_configlet_main">
         <tal:root define="lt string:&lt;;
                   gt string:&gt;;
-                  ips python:options['ips'];"
+                  ips view/get_unique_ips;
+                  settings view/get_app_links"
                   >
-            <a id="setup-link" tal:attributes="href python:options['settings_url']" tal:content="python:options['settings_text']">
+            <a id="setup-link" tal:attributes="href settings/settings_url" tal:content="settings/settings_text">
                 SMS Authenticator configuration
             </a>
             <h1 class="documentFirstHeading" i18n:translate="">SMS Authenticator</h1>

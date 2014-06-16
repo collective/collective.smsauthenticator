@@ -12,11 +12,8 @@ _ = MessageFactory('collective.smsauthenticator')
 
 class ListUserIPs(BrowserView):
     """
-    List user IPS.
+    List user IPS, generic view
     """
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
 
     def _get_user_unique_ips(self, user, with_username=False):
         """
@@ -80,40 +77,33 @@ class ListUserIPs(BrowserView):
 
         return unique_ips
 
-    def unique(self):
-        """
-        List unique user IPs.
-        """
+    def get_app_links(self):
+        """ View function to pass function along to actual helper """
+        return get_app_links(self.context)
+
+class ListUniqueUserIPs(ListUserIPs):
+    """
+    BrowserView for List unique user IPs.
+    """
+
+    def get_unique_ips(self):
         users = api.user.get_users()
         ips = set()
         for user in users:
             ips.update(self._get_user_unique_ips(user, with_username=False))
 
-        template = self.context.restrictedTraverse('show_unique_user_ips')
-        template_context = get_app_links(self.context)
-        template_context.update({
-            'ips': ips,
-            'charset': 'utf-8'
-        })
-        rendered_template = template(**template_context)
+        return ips
 
-        return rendered_template
+class ListAllUserIPs(ListUserIPs):
+    """
+    BrowserView for List all user IPs.
+    """
 
-    def all(self):
-        """
-        List all user IPs.
-        """
+    def get_all_ips(self):
+
         users = api.user.get_users()
         ips = []
         for user in users:
             ips += self._get_user_ips(user, with_username=True)
 
-        template = self.context.restrictedTraverse('show_all_user_ips')
-        template_context = get_app_links(self.context)
-        template_context.update({
-            'ips': ips,
-            'charset': 'utf-8'
-        })
-        rendered_template = template(**template_context)
-
-        return rendered_template
+        return ips
