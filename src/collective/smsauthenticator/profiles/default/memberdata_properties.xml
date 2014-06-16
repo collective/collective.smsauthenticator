@@ -6,4 +6,5 @@
   <property name="mobile_number_reset_token" type="string"></property>
   <property name="mobile_number_reset_code" type="string"></property>
   <property name="mobile_number_authentication_code" type="string"></property>
+  <property name="ips" type="string"></property>
 </object>
