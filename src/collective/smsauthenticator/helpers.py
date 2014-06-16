@@ -542,8 +542,11 @@ def get_updated_ips_for_member_properties_update(user, request=None):
     :return bool: True on success and False on failure.
     """
     ip = extract_ip_address_from_request(request)
-    existing_ips = user.getProperty('ips')
-    updated_ips = "{0}\n{1},{2}".format(existing_ips, ip, time.time())
+    existing_ips = user.getProperty('ips', '')
+    if existing_ips:
+        updated_ips = "{0}\n{1},{2}".format(existing_ips, ip, time.time())
+    else:
+        updated_ips = "{1},{2}".format(existing_ips, ip, time.time())
     return {'ips': updated_ips}
 
 def save_ip(user, request=None):
