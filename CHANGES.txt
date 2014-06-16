@@ -4,7 +4,7 @@ Changelog
 ------------------------------------------------
 --Yet unreleased--
 
-- Adding admin helper views for viewing IPs users have been using when logging in.
+- Adding admin helper views for viewing IPs that users have been using when logging in.
 
 0.2.4
 ------------------------------------------------
