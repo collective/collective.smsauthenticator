@@ -90,8 +90,8 @@
     <browser:page
         name="sms-authenticator-show-unique-user-ips"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".list_user_ips.ListUserIPs"
-        attribute="unique"
+        class=".list_user_ips.ListUniqueUserIPs"
+        template="templates/show_unique_user_ips.pt"
         permission="cmf.ManagePortal"
         />
 
@@ -99,8 +99,8 @@
     <browser:page
         name="sms-authenticator-show-all-user-ips"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".list_user_ips.ListUserIPs"
-        attribute="all"
+        class=".list_user_ips.ListAllUserIPs"
+        template="templates/show_all_user_ips.pt"
         permission="cmf.ManagePortal"
         />
 
