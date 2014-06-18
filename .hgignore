@@ -18,3 +18,8 @@ syntax: regexp
 ^build/
 ^dist/
 ^src/collective.smsauthenticator\.egg-info
+\.installed\.cfg
+^examples/simple/parts/
+\.mr\.developer\.cfg
+^examples/simple/bin/
+^examples/simple/var/
