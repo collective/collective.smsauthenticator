@@ -8,6 +8,7 @@ recursive-include src/collective/smsauthenticator/skins/smsauthenticator_custom 
 recursive-include src/collective/smsauthenticator/profiles/default *
 recursive-include src/collective/smsauthenticator/profiles/uninstall *
 recursive-include src/collective/smsauthenticator/browser/static *
+recursive-include src/collective/smsauthenticator/browser/templates *
 recursive-include src/collective/smsauthenticator/www *
 include src/collective/smsauthenticator/configure.zcml
 include src/collective/smsauthenticator/overrides.zcml
