@@ -40,14 +40,14 @@ class IRequestMobileNumberResetForm(form.Schema):
     """
     username = TextLine(
         title=_(u'Username'),
-        description=_(u'Enter your username for verification. The link code to reset the '
-                      u'mobile number would be sent to your email.'),
+        description=_(u'Enter your username for verification.'),
         required=True
     )
     mobile_number = TextLine(
         title=_(u'Mobile number'),
-        description=_(u"Enter your mobile phone number. A verification code would be sent "
-                      u"to that number by SMS shortly."),
+        description=_(u"Enter your mobile phone number. Use the internatiol format.\
+            <br/>Example Dutch number: +31699555555\
+            <br/>Example International number: +49234555776"),
         required=True
     )
 
@@ -59,9 +59,10 @@ class RequestMobileNumberResetForm(form.SchemaForm):
     fields = field.Fields(IRequestMobileNumberResetForm)
     ignoreContext = True
     schema = IRequestMobileNumberResetForm
-    label = _("Request to reset the mobile number")
-    description = _(u"Enter your username for verification. The link code to reset the "
-                    u"mobile number would be sent to your email.")
+    label = _("Request to (re)set the mobile number")
+    description = _(u"Use the form below to (re)set your mobile phone number. \
+    <br/> After submitting this form, you will receive an e-mail with a link and a SMS with a code. \
+    <br/><br/> To succesfully verify your mobile number, open the link from your e-mail in a browser and enter the code from your SMS in the form.")
 
     @button.buttonAndHandler(_('Submit'))
     def handleSubmit(self, action):

@@ -38,9 +38,8 @@ class IResetMobileNumberForm(form.Schema):
     Interface for the SMS Authenticator Reset Mobile Number form.
     """
     token = TextLine(
-        title=_(u"Enter the verification code sent to you by SMS to activate two-step verification."),
-        description=_(u"You have (or will shortly) received an SMS message with verification code "
-                      u'to reset your mobile number. Enter the code below.'),
+        title=_(u"SMS verification code"),
+        description=_(u"Enter the verification code you received on your mobile phone."),
         required=True
     )
 
@@ -53,14 +52,13 @@ class ResetMobileNumberForm(form.SchemaForm):
 
     - Signed user data is validated. If valid, the user is fetched.
     - Token (`signature` param) is matched to the one obtained from user records. If matched, the
-      mobile number is reset (saved in the users' profile).
+      mobile number saved in the users' profile.
     """
     fields = field.Fields(IResetMobileNumberForm)
     ignoreContext = True
     schema = IResetMobileNumberForm
-    label = _("Reset your two-step verification mobile number")
-    description = _(u"To reset the two-step verification mobile number you need to enter the code "
-                    u"you have received on the mobile number provided.")
+    label = _("(Re)set your two-step verification mobile number")
+    description = _(u"You have received (or will shortly receive) an SMS with an verification code.")
 
     def action(self):
         return "{0}?{1}".format(
@@ -90,7 +88,7 @@ class ResetMobileNumberForm(form.SchemaForm):
         if not user:
             reason = _("User not found {0}.".format(username))
             IStatusMessage(self.request).addStatusMessage(
-                _("Resetting of the mobile number failed! {0}".format(reason)),
+                _("(Re)setting of the mobile number failed! {0}".format(reason)),
                 'error'
                 )
             return
@@ -107,7 +105,7 @@ class ResetMobileNumberForm(form.SchemaForm):
                 if mobile_number_reset_token != signature_token:
                     reason = _("Invalid mobile number reset token.")
                     IStatusMessage(self.request).addStatusMessage(
-                        _("Resetting of the mobile number failed! {0}".format(reason)),
+                        _("(Re)setting of the mobile number failed! {0}".format(reason)),
                         'error'
                         )
                     return
@@ -122,8 +120,8 @@ class ResetMobileNumberForm(form.SchemaForm):
                     )
 
                 IStatusMessage(self.request).addStatusMessage(
-                    _("Two-step verification mobile number is successfully (re)set for your account. "
-                      "You're now logged in."),
+                    _("You have succesfully changed/set your mobile number.\
+                      You're now logged in."),
                     'info'
                     )
                 redirect_url = "{0}".format(self.context.absolute_url())

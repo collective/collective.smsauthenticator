@@ -42,7 +42,7 @@ class SetupMobileNumberForm(form.SchemaForm):
     schema = ISetupMobileNumberForm
     label = _("Setup mobile number for two-step verification")
     description = _(u"To setup two-step verification you need to enter your mobile phone number"
-                    u"to which you would be receiving SMS messages with login codes.")
+                    u"to which you will be receiving SMS messages with login codes.")
 
     @button.buttonAndHandler(_('Verify'))
     def handleSubmit(self, action):

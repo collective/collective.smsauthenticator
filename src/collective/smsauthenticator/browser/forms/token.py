@@ -128,7 +128,7 @@ class TokenForm(form.SchemaForm):
         if token_field:
             token_field.field.description = _(
                 """Enter the login code sent to your mobile number """
-                """If you have somehow lost your bar code, request a mobile number reset """
+                """If you have somehow lost your mobile number, request a reset """
                 """<a href=\"{0}/@@request-mobile-number-reset\">here</a>.""".format(self.context.absolute_url())
                 )
 
