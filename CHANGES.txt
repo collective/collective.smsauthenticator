@@ -1,61 +1,52 @@
 Changelog
 ================================================
-0.2.7
+0.2.7 (2014-06-20)
 ------------------------------------------------
-2014-06-20
 
 - Direct user to a 'reset email sent' page instead of loginfom [thepjot]
 - Improve/change some help texts [thepjot]
 
-0.2.6
+0.2.6 (2014-06-19)
 ------------------------------------------------
-2014-06-19
 
 - Improved help texts.
 
-0.2.5
+0.2.5 (2014-06-18)
 ------------------------------------------------
-2014-06-18
 
 - Adding admin helper views for viewing IPs that users have been using when logging in.
 
-0.2.4
+0.2.4 (2014-05-08)
 ------------------------------------------------
-2014-05-08
 
 - Increasing number of chars in the SMS token from 6 to 8.
 
-0.2.3
+0.2.3 (2014-03-20)
 ------------------------------------------------
-2014-03-20
 
 - Number of fixes and improvements.
 - Fixes in translations.
 
-0.2.2
+0.2.2 (2014-03-10)
 ------------------------------------------------
-2014-03-10
 
 - Fixed lost Plone info status message on mobile number (re)set.
 
-0.2.1
+0.2.1 (2014-03-10)
 ------------------------------------------------
-2014-03-10
 
 - Better success message on mobile number (re)set.
 
-0.2
+0.2 (2014-03-10)
 ------------------------------------------------
-2014-03-10
 
 - Taking out an extra step with logging in for the first time. Instead, logging it
   the user after the confirmation of the mobile.
 - Having the username filled in setting up the mobile number for the first time, since
   at that point it's already known.
 
-0.1
+0.1 (2014-02-28)
 ------------------------------------------------
-2014-02-28
 
 - Initial release, with two-step verification, IP white-listing, configurable lifetime for the login
   codes, mobile number recover and app control panel.
