@@ -1,5 +1,12 @@
 Changelog
 ================================================
+0.2.7
+------------------------------------------------
+2014-06-20
+
+- Direct user to a 'reset email sent' page instead of loginfom [thepjot]
+- Improve/change some help texts [thepjot]
+
 0.2.6
 ------------------------------------------------
 2014-06-19
