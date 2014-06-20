@@ -1,5 +1,12 @@
 Changelog
 ================================================
+0.2.8 (unreleased)
+------------------------------------------------
+
+- Use source_users IAutheticationPlugin for password check to prevent 
+  recursive loop [thepjot]
+- Better return values, we always return None in our pas plugin [thepjot]
+
 0.2.7 (2014-06-20)
 ------------------------------------------------
 
