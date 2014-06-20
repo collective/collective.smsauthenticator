@@ -50,6 +50,15 @@ class IRequestMobileNumberResetForm(form.Schema):
             <br/>Example International number: +49234555776"),
         required=True
     )
+    form.mode(note='display')
+    note = TextLine(
+            title=u"Important note",
+            default=u"",
+            readonly=True,
+            required=False,
+            description=_(u"After submitting this form, you will receive an e-mail with a link and a SMS with a code. \
+    <br/><br/> To succesfully verify your mobile number, open the link from your e-mail in a browser and enter the code from your SMS in the form.")
+        )
 
 
 class RequestMobileNumberResetForm(form.SchemaForm):
@@ -60,9 +69,7 @@ class RequestMobileNumberResetForm(form.SchemaForm):
     ignoreContext = True
     schema = IRequestMobileNumberResetForm
     label = _("Request to (re)set the mobile number")
-    description = _(u"Use the form below to (re)set your mobile phone number. \
-    <br/> After submitting this form, you will receive an e-mail with a link and a SMS with a code. \
-    <br/><br/> To succesfully verify your mobile number, open the link from your e-mail in a browser and enter the code from your SMS in the form.")
+    description = _(u"Use the form below to (re)set your mobile phone number.")
 
     @button.buttonAndHandler(_('Submit'))
     def handleSubmit(self, action):
@@ -152,10 +159,10 @@ class RequestMobileNumberResetForm(form.SchemaForm):
                     raise SMTPRecipientsRefused('Recipient address rejected by server')
 
                 IStatusMessage(self.request).addStatusMessage(
-                    _("An email with instructions on resetting your mobile number is sent successfully."),
+                    _("An email with further instructions for (re)setting your mobile number has been sent."),
                     'info'
                     )
-                redirect_url = "{0}/login_form".format(self.context.absolute_url())
+                redirect_url = "{0}/@@reset-email-sent".format(self.context.absolute_url())
                 self.request.response.redirect(redirect_url)
             except ValueError as e:
                 reason = _(str(e))

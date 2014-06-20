@@ -58,7 +58,8 @@ class ResetMobileNumberForm(form.SchemaForm):
     ignoreContext = True
     schema = IResetMobileNumberForm
     label = _("(Re)set your two-step verification mobile number")
-    description = _(u"You have received (or will shortly receive) an SMS with an verification code.")
+    description = _(u"You have received (or will shortly receive) an SMS with an verification code.\
+        <br\>After succesfully submitting this form, you will be automatically logged in.")
 
     def action(self):
         return "{0}?{1}".format(

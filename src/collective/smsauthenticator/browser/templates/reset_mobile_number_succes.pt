@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone"
+      >
+
+<body>
+    <metal:main fill-slot="main">
+    <h1 class="documentFirstHeading" i18n:translate="">Request to (re)set the mobile number</h1>
+
+    <p>An e-mail has been sent to your e-mailadres with a link to complete your request.
+    <br/>Please open the link provided in the e-mail and enter the code received on your mobile phone.
+    </p>
+    </metal:main>
+</body>
+</html>

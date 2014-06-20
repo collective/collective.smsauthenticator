@@ -139,4 +139,11 @@
         layer="collective.smsauthenticator.interfaces.ISMSAuthenticatorLayer"
         />
 
+
+    <browser:page
+        for="*"
+        name="reset-email-sent"
+        template="templates/reset_mobile_number_succes.pt" 
+        permission="zope2.View"
+        />
 </configure>
