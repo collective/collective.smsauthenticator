@@ -47,7 +47,8 @@ class TokenForm(form.SchemaForm):
     schema = ITokenForm
     label = _(u'Two-step verification')
     description = _(u'Confirm your login by entering the login code sent to your mobile number by SMS.')
-
+    css_class = "enableAutoFocus"
+    
     def action(self):
         return "{0}?{1}".format(
             self.request.getURL(),
