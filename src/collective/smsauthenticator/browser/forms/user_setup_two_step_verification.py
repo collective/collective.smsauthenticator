@@ -43,7 +43,8 @@ class SetupTwoStepVerificationForm(form.SchemaForm):
     schema = ISetupTwoStepVerificationForm
     label = _("Setup two-step verification")
     description = _(u"Complete the two-step verification setup by confirming your mobile number")
-
+    css_class = "enableAutoFocus"
+    
     @button.buttonAndHandler(_('Verify'))
     def handleSubmit(self, action):
         if bool(api.user.is_anonymous()) is True:

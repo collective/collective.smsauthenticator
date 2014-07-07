@@ -60,7 +60,8 @@ class ResetMobileNumberForm(form.SchemaForm):
     label = _("(Re)set your two-step verification mobile number")
     description = _(u"You have received (or will shortly receive) an SMS with an verification code.\
         <br\>After succesfully submitting this form, you will be automatically logged in.")
-
+    css_class = "enableAutoFocus"
+    
     def action(self):
         return "{0}?{1}".format(
             self.request.getURL(),

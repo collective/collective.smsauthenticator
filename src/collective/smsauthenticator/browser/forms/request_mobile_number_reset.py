@@ -70,7 +70,8 @@ class RequestMobileNumberResetForm(form.SchemaForm):
     schema = IRequestMobileNumberResetForm
     label = _("Request to (re)set the mobile number")
     description = _(u"Use the form below to (re)set your mobile phone number.")
-
+    css_class = "enableAutoFocus"
+    
     @button.buttonAndHandler(_('Submit'))
     def handleSubmit(self, action):
         data, errors = self.extractData()
