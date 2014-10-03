@@ -1,6 +1,6 @@
 Changelog
 ================================================
-0.2.9 (unreleased)
+0.2.9 (2014-10-03)
 ------------------------------------------------
 - CL adduser fails due to plone.api, but adduser adds as a Zope account,
   which doesn't need the twofactor properties. We shortcut the subscriber if it's a 
