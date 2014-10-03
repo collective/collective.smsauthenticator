@@ -12,7 +12,7 @@ from plone.app.users.browser.personalpreferences import UserDataPanel
 
 from Products.PluggableAuthService.interfaces.authservice import IBasicUser
 from Products.PluggableAuthService.interfaces.events import IPrincipalCreatedEvent
-
+from Products.PlonePAS.plugins.ufactory import PloneUser
 logger = logging.getLogger("collective.smsauthenticator")
 
 _ = MessageFactory('collective.smsauthenticator')
@@ -128,6 +128,13 @@ def userCreatedHandler(principal, event):
     from collective.smsauthenticator.helpers import (
         is_two_step_verification_globally_enabled, get_or_create_secret
         )
+    # This function is also triggered for Zope Users
+    # We don't need to execute this code for them
+    # Zope users are "PropertiedUser", while Plone users are "PloneUser"
+    if hasattr(principal, "__class__") and PloneUser != principal.__class__:
+        logger.debug("Zope User detetected, ignoring")
+        return
+
     user = api.user.get(username=principal.getId())
     if is_two_step_verification_globally_enabled():
         get_or_create_secret(user)
