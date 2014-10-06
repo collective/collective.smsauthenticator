@@ -100,7 +100,7 @@ class SMSAuthenticatorPlugin(BasePlugin):
                 return None
             if is_whitelisted_client():
                 return None
-            print "Hello SMS"
+            #logger.debug("Hello SMS")
             # Setting the data in the session doesn't seem to work. That's why we use the `ska` package.
             # The secret key would be then a combination of username, secret stored in users' profile
             # and the browser version.

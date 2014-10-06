@@ -17,7 +17,8 @@ from Products.statusmessages.interfaces import IStatusMessage
 
 from collective.smsauthenticator.helpers import (
     validate_mobile_number_authentication_code, validate_user_data, extract_request_data,
-    get_updated_ips_for_member_properties_update
+    get_updated_ips_for_member_properties_update, extract_request_data, send_login_code_sms,
+    generate_code
     )
 
 logger = logging.getLogger('collective.smsauthenticator')
@@ -34,7 +35,7 @@ class ITokenForm(form.Schema):
     token = TextLine(
         title=_('Enter code'),
         description=_('Enter the login code sent to your mobile number.'),
-        required=True)
+        required=False)
 
 
 class TokenForm(form.SchemaForm):
@@ -48,14 +49,14 @@ class TokenForm(form.SchemaForm):
     label = _(u'Two-step verification')
     description = _(u'Confirm your login by entering the login code sent to your mobile number by SMS.')
     css_class = "enableAutoFocus"
-    
+
     def action(self):
         return "{0}?{1}".format(
             self.request.getURL(),
             self.request.get('QUERY_STRING', '')
             )
 
-    @button.buttonAndHandler(_('Verify'))
+    @button.buttonAndHandler(_(u'Verify'))
     def handleSubmit(self, action):
         """
         Here we should check couple of things:
@@ -65,11 +66,22 @@ class TokenForm(form.SchemaForm):
 
         If all is well and valid, we sudo login the user given.
         """
+        if not action.title == _(u'Verify'):
+            return
+
+        logger.debug('verify')
+
         data, errors = self.extractData()
         if errors:
             return False
 
         token = data.get('token', '')
+
+        if not token:
+            IStatusMessage(self.request).addStatusMessage(
+                _("No token provided!"), 'error'
+                )
+            return
 
         user = None
         username = self.request.get('auth_user', '')
@@ -113,6 +125,67 @@ class TokenForm(form.SchemaForm):
         else:
             IStatusMessage(self.request).addStatusMessage(_("Invalid token or token expired."), 'error')
 
+    @button.buttonAndHandler(_(u'Resend SMS'))
+    def handleResendSMS(self, action):
+        """
+        Handle resend SMS action.
+        """
+        if not action.title == _(u'Resend SMS'):
+            return
+
+        logger.debug('resend sms')
+
+        data, errors = self.extractData()
+        #if errors:
+        #    return False
+
+        token = data.get('token', '')
+
+        user = None
+        username = self.request.get('auth_user', '')
+
+        if username:
+            user = api.user.get(username=username)
+
+            # Validating the signed request data. If invalid (likely throttled with or expired), generate an
+            # appropriate error message.
+            user_data_validation_result = validate_user_data(request=self.request, user=user)
+            if not user_data_validation_result.result:
+                if 'Signature timestamp expired!' in user_data_validation_result.reason:
+                    # Remove used authentication code
+                    user.setMemberProperties(
+                        mapping = {
+                            'mobile_number_authentication_code': '',
+                            }
+                        )
+                IStatusMessage(self.request).addStatusMessage(
+                    _("Invalid data. Details: {0}".format(' '.join(user_data_validation_result.reason))), 'error'
+                    )
+                return
+
+        mobile_number_authentication_code = generate_code(user)
+        mobile_number = user.getProperty('mobile_number')
+
+        # Send the SMS
+        sms_sent = send_login_code_sms(
+            mobile_number = mobile_number,
+            code = mobile_number_authentication_code
+            )
+
+        if sms_sent:
+            # Save the `signature` value to the `mobile_number_reset_token`.
+            user.setMemberProperties(
+                mapping = {
+                    'mobile_number_authentication_code': mobile_number_authentication_code,
+                }
+                )
+            IStatusMessage(self.request).addStatusMessage(
+                _("Your SMS has just been resent."), 'info'
+                )
+
+        self.request.response.redirect("{0}?{1}".format(self.request.ACTUAL_URL, self.request.QUERY_STRING))
+
+
     def updateFields(self, *args, **kwargs):
         """
         Here the following happens. Cookie set is cleared. Thus, user is no longer logged in, but only
@@ -130,7 +203,9 @@ class TokenForm(form.SchemaForm):
             token_field.field.description = _(
                 """Enter the login code sent to your mobile number """
                 """If you have somehow lost your mobile number, request a reset """
-                """<a href=\"{0}/@@request-mobile-number-reset\">here</a>.""".format(self.context.absolute_url())
+                """<a href=\"{0}/@@request-mobile-number-reset\">here</a>. """
+                """If you didn't receive an SMS message, resend it by clicking """
+                """the Resend SMS button below""".format(self.context.absolute_url())
                 )
 
         return super(TokenForm, self).updateFields(*args, **kwargs)
