@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-02-12 15:34+0000\n"
+"POT-Creation-Date: 2015-02-12 15:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,7 +102,7 @@ msgid "Enable two-step verification."
 msgstr ""
 
 #: ./userdataschema.py:67
-msgid "Enable/disable the two-step verification. Click <a href="@@setup-mobile-number">here</a> to set it up or <a href="@@disable-two-step-verification">here</a> to disable it."
+msgid "Enable/disable the two-step verification. Click                      <a href='@@setup-mobile-number'>here</a> to set it up or                      <a href='@@disable-two-step-verification'>here</a> to disable it."
 msgstr ""
 
 #: ./browser/forms/token.py:36
@@ -110,7 +110,7 @@ msgid "Enter code"
 msgstr ""
 
 #: ./browser/forms/token.py:203
-msgid "Enter the login code sent to your mobile number If you have somehow lost your mobile number, request a reset <a href="{0}/@@request-mobile-number-reset">here</a>. If you didn't receive an SMS message, resend it by clicking the Resend SMS button below"
+msgid "Enter the login code sent to your mobile number                If you have somehow lost your mobile number, request a reset                <a href='{0}/@@request-mobile-number-reset'>here</a>.                If you didn't receive an SMS message, resend it by clicking                the Resend SMS button below."
 msgstr ""
 
 #: ./browser/forms/token.py:37
@@ -378,7 +378,7 @@ msgid "White-listed IP addresses"
 msgstr ""
 
 #: ./browser/forms/reset_mobile_number.py:61
-msgid "You have received (or will shortly receive) an SMS with an verification code.        <br\>After successfully submitting this form, you will be automatically logged in."
+msgid "You have received (or will shortly receive) an SMS with an verification code.        <br/>After successfully submitting this form, you will be automatically logged in."
 msgstr ""
 
 #: ./browser/forms/reset_mobile_number.py:125

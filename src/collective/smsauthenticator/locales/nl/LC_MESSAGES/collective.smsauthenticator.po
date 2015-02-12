@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2015-02-12 15:34+0000\n"
-"PO-Revision-Date: 2015-02-12 16:55+0100\n"
+"POT-Creation-Date: 2015-02-12 15:55+0000\n"
+"PO-Revision-Date: 2015-02-12 16:58+0100\n"
 "Last-Translator: Artur Barseghyan <barseghyan@goldmund-wyldebeast-wunderliebe.com>\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -114,16 +114,16 @@ msgid "Enable two-step verification."
 msgstr "Schakel twee-stap verificatie in."
 
 #: ./userdataschema.py:67
-msgid "Enable/disable the two-step verification. Click <a href="@@setup-mobile-number">here</a> to set it up or <a href="@@disable-two-step-verification">here</a> to disable it."
-msgstr ""
+msgid "Enable/disable the two-step verification. Click                      <a href='@@setup-mobile-number'>here</a> to set it up or                      <a href='@@disable-two-step-verification'>here</a> to disable it."
+msgstr "Twee-stappen  verificatie inschakelen/uitschakelen. Klik <a href='@@setup-mobile-number'>hier</a> om het in te stellen of <a href='@@disable-twee-staps-verification'>hier</a> om het uit te schakelen."
 
 #: ./browser/forms/token.py:36
 msgid "Enter code"
 msgstr "Type de in code"
 
 #: ./browser/forms/token.py:203
-msgid "Enter the login code sent to your mobile number If you have somehow lost your mobile number, request a reset <a href="{0}/@@request-mobile-number-reset">here</a>. If you didn't receive an SMS message, resend it by clicking the Resend SMS button below"
-msgstr ""
+msgid "Enter the login code sent to your mobile number                If you have somehow lost your mobile number, request a reset                <a href='{0}/@@request-mobile-number-reset'>here</a>.                If you didn't receive an SMS message, resend it by clicking                the Resend SMS button below."
+msgstr "Voer de inlogcode verzonden naar uw mobiele nummer. Als u op een of andere manier hebt uw mobiele nummer verloren, vraag dan een reset <a href='{0}/@@request-mobile-nummer-reset'>hier</a>. Als u de SMS-bericht niet heeft ontvangen, stuur het opnieuw door op onderstaande SMS opnieuw verzenden knop te klikken."
 
 #: ./browser/forms/token.py:37
 msgid "Enter the login code sent to your mobile number."
@@ -390,7 +390,7 @@ msgid "White-listed IP addresses"
 msgstr "Witte lijst van IP-adressen"
 
 #: ./browser/forms/reset_mobile_number.py:61
-msgid "You have received (or will shortly receive) an SMS with an verification code.        <br\>After successfully submitting this form, you will be automatically logged in."
+msgid "You have received (or will shortly receive) an SMS with an verification code.        <br/>After successfully submitting this form, you will be automatically logged in."
 msgstr "U hebt al (of zal binnenkort) een SMS met een verificatiecode ontvangen. <br/>Na het succesvol verzending van dit formulier wordt u automatisch ingelogd."
 
 #: ./browser/forms/reset_mobile_number.py:125
