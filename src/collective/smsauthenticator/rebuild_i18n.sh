@@ -1,5 +1,5 @@
 #!/bin/sh
-I18NDUDE="../../../../../bin/i18ndude"
+I18NDUDE="../../../bin/i18ndude"
 I18NDOMAIN="collective.smsauthenticator"
 
 # Synchronise the templates and scripts with the .pot.

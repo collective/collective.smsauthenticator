@@ -1,0 +1,20 @@
+<configure
+        xmlns="http://namespaces.zope.org/zope"
+        xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+        i18n_domain="collective.smsauthenticator">
+    <genericsetup:registerProfile
+            name="default"
+            title="collective.smsauthenticator"
+            directory="profiles/default"
+            description="Installs the collective.smsauthenticator package"
+            provides="Products.GenericSetup.interfaces.EXTENSION"
+            />
+
+    <genericsetup:registerProfile
+            name="uninstall"
+            title="collective.smsauthenticator uninstall"
+            directory="profiles/uninstall"
+            description="Uninstalls the collective.smsauthenticator package"
+            provides="Products.GenericSetup.interfaces.EXTENSION"
+            />
+</configure>

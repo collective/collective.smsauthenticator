@@ -1,6 +1,6 @@
 __title__ = 'collective.smsauthenticator'
-__version__ = '0.3.0'
-__build__ = 0x00000c
+__version__ = '0.3.1'
+__build__ = 0x00000d
 __author__ = 'Goldmund, Wyldebeast & Wunderliebe <info@gw20e.com>'
 __copyright__ = 'Goldmund, Wyldebeast & Wunderliebe'
 __license__ = 'GPL 2.0/LGPL 2.1'

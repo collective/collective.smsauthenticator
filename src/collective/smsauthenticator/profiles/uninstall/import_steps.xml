@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="collectivesmsauthenticator_uninstall" version="20081125-01"
+              handler="collective.smsauthenticator.setuphandlers.uninstall"
+              title="collective.smsauthenticator uninstallation">
+  collective.smsauthenticator uninstallation
+ </import-step>
+</import-steps>

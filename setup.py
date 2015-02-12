@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.3.0'
+version = '0.3.1'
 
 try:
     readme = open('README.rst').read()
@@ -56,7 +56,7 @@ setup(
         # -*- Extra requirements: -*-
         'plone.api>=1.1.0',
         'plone.directives.form>=1.1',
-        'ska==1.4.2',
+        'ska>=1.4.2',
         'rebus>=0.2',
         'twilio>=3.6.0'
     ],
