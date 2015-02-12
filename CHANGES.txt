@@ -7,9 +7,9 @@ Changelog
 
 0.2.9 (2014-10-03)
 ------------------------------------------------
-- CL adduser fails due to plone.api, but adduser adds as a Zope account,
-  which doesn't need the twofactor properties. We shortcut the subscriber if it's a 
-  Zope account being added. See plone.api docs for issue with 'scripts':
+- Fix: CL adduser fails due to plone.api, but adduser adds as a Zope account,
+  which doesn't need the twofactor properties. We shortcut the subscriber if 
+  it's a Zope account being added. See plone.api docs for issue with 'scripts':
   http://docs.plone.org/external/plone.api/docs/api/exceptions.html#plone.api.exc.CannotGetPortalError
   [thepjot]
 

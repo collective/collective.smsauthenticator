@@ -6,7 +6,7 @@ Contents:
 .. toctree::
    :maxdepth: 20
 
-   ska
+   collective.smsauthenticator
 
 Indices and tables
 ===================================================
