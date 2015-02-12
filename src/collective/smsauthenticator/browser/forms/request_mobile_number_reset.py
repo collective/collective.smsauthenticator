@@ -45,7 +45,7 @@ class IRequestMobileNumberResetForm(form.Schema):
     )
     mobile_number = TextLine(
         title=_(u'Mobile number'),
-        description=_(u"Enter your mobile phone number. Use the internatiol format.\
+        description=_(u"Enter your mobile phone number. Use the international format.\
             <br/>Example Dutch number: +31699555555\
             <br/>Example International number: +49234555776"),
         required=True
@@ -57,7 +57,7 @@ class IRequestMobileNumberResetForm(form.Schema):
             readonly=True,
             required=False,
             description=_(u"After submitting this form, you will receive an e-mail with a link and a SMS with a code. \
-    <br/><br/> To succesfully verify your mobile number, open the link from your e-mail in a browser and enter the code from your SMS in the form.")
+    <br/><br/> To successfully verify your mobile number, open the link from your e-mail in a browser and enter the code from your SMS in the form.")
         )
 
 

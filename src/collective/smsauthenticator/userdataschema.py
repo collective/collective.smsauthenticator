@@ -64,9 +64,9 @@ class IEnhancedUserDataSchema(IUserDataSchema):
     """
     enable_two_step_verification = Bool(
         title=_('Enable two-step verification.'),
-        description=_("""Enable/disable the two-step verification. Click """
-                      """<a href=\"@@setup-mobile-number\">here</a> to set it up or """
-                      """<a href=\"@@disable-two-step-verification\">here</a> to disable it."""
+        description=_("""Enable/disable the two-step verification. Click\
+                      <a href='@@setup-mobile-number'>here</a> to set it up or\
+                      <a href='@@disable-two-step-verification'>here</a> to disable it."""
             ),
         required=False
         )

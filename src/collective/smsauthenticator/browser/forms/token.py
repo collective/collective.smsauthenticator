@@ -201,11 +201,11 @@ class TokenForm(form.SchemaForm):
         token_field = self.fields.get('token')
         if token_field:
             token_field.field.description = _(
-                """Enter the login code sent to your mobile number """
-                """If you have somehow lost your mobile number, request a reset """
-                """<a href=\"{0}/@@request-mobile-number-reset\">here</a>. """
-                """If you didn't receive an SMS message, resend it by clicking """
-                """the Resend SMS button below""".format(self.context.absolute_url())
+                """Enter the login code sent to your mobile number\
+                If you have somehow lost your mobile number, request a reset\
+                <a href='{0}/@@request-mobile-number-reset'>here</a>.\
+                If you didn't receive an SMS message, resend it by clicking\
+                the Resend SMS button below.""".format(self.context.absolute_url())
                 )
 
         return super(TokenForm, self).updateFields(*args, **kwargs)

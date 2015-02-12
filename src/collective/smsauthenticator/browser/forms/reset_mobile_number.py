@@ -59,7 +59,7 @@ class ResetMobileNumberForm(form.SchemaForm):
     schema = IResetMobileNumberForm
     label = _("(Re)set your two-step verification mobile number")
     description = _(u"You have received (or will shortly receive) an SMS with an verification code.\
-        <br\>After succesfully submitting this form, you will be automatically logged in.")
+        <br\>After successfully submitting this form, you will be automatically logged in.")
     css_class = "enableAutoFocus"
     
     def action(self):
@@ -122,7 +122,7 @@ class ResetMobileNumberForm(form.SchemaForm):
                     )
 
                 IStatusMessage(self.request).addStatusMessage(
-                    _("You have succesfully changed/set your mobile number.\
+                    _("You have successfully changed/set your mobile number.\
                       You're now logged in."),
                     'info'
                     )
