@@ -145,7 +145,6 @@ def uninstall_persistent_userdataschemaprovider(context):
     util = None
     try:
         util = getUtility(IEnhancedUserDataSchema)
-        # print util
     except ComponentLookupError:
         pass
 
@@ -153,7 +152,6 @@ def uninstall_persistent_userdataschemaprovider(context):
     util2 = None
     try:
         util2 = getUtility(IUserDataSchemaProvider)
-        # print util
     except ComponentLookupError:
         pass
 
