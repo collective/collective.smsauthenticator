@@ -1,6 +1,6 @@
-================================================
+===========================
 collective.smsauthenticator
-================================================
+===========================
 `Two-step verification <http://en.wikipedia.org/wiki/Two-step_verification>`_
 for Plone 4 with use login codes sent by SMS. This app allows users to enable
 the two-step verification for their Plone accounts. A mobile phone capable to
@@ -10,19 +10,19 @@ Admins can white-list the IPs, for which the two-step verification would be
 skipped.
 
 Prerequiresites
-================================================
+===============
 - Mobile phone which is able to receive SMS messages.
 - Plone 4 (tested with Plone >= 4.3.1)
 
 Limitations
-================================================
+===========
 Note, that two-step verification works only for Plone users and does not work
 for Zope users (those added with "./bin/instance" adduser command).
 
 Usage
-================================================
+=====
 Case 1: Enabling the two-step verification
-------------------------------------------------
+------------------------------------------
 Pre-conditions: User is not logged into the Plone site, does not yet have
 two-step verification enabled and has a mobile phone.
 
@@ -54,7 +54,7 @@ two-step verification is enabled for your account.
     :align: center
 
 Case 2: Two-step verification
-------------------------------------------------
+-----------------------------
 Pre-conditions: User is not logged in and has enabled the two-step verification.
 
 When you log into the Plone site (just using username and password), you would
@@ -70,7 +70,7 @@ shown into the "Enter code" field.
 If token is valid, you would be logged in.
 
 Case 3: Lost mobile phone or phone number
-------------------------------------------------
+-----------------------------------------
 Pre-conditions: User is not logged in, has enabled the two-step verification.
 
 There might be cases when you have lost your mobile phone (either really lost
@@ -105,7 +105,7 @@ mobile number is reset.
     :align: center
 
 Case 4: Disabling the two-step verification
-------------------------------------------------
+-------------------------------------------
 Pre-conditions: User is logged in and has enabled the two-step verification.
 
 From any page follow the "Disable two-step verification" link in the menu (next
@@ -120,9 +120,9 @@ After which you would get a message.
     :align: center
 
 Installation
-================================================
+============
 Buildout
-------------------------------------------------
+--------
 >>> [instance]
 >>> eggs +=
 >>>     collective.smsauthenticator
@@ -131,13 +131,13 @@ Buildout
 >>>     collective.smsauthenticator
 
 ZMI
-------------------------------------------------
+---
 ZMI -> portal_quickinstaller
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Choose "SMS Authenticator Plone" and install it.
 
 ZMI -> acl_users
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 1. Choose "sms_auth (SMS Authenticator plugin (collective.smsauthenticator))".
 
 2. Make sure the "Active plugins" section of "Authentication" has the following
@@ -148,71 +148,71 @@ ZMI -> acl_users
     - source_users
 
 Configuration options
-================================================
+=====================
 App control panel can be accessed at
 http://your-plone-site.com/@@sms-authenticator-settings
 
 Main
-------------------------------------------------
+----
 
 .. image:: _static/11_control_panel_tab_main.png
     :align: center
 
 Globally enabled
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 If checked, two-step verification is globally force-enabled for all site users
 and they no longer have an option to disable it; this applies to all new users
 (just registered accounts) as well.
 
 White-listed IP addresses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 List of white-listed IP addresses - one at a line. If user comes from one of
 those, the two-step verification is skipped even if user has enabled it or
 two-step verification is globally enabled.
 
 Extra
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
 Additionals options of the control panel are:
 
 - Enable two-step verification for all users.
 - Disable two-step verification for all users.
 
 Twilio
-------------------------------------------------
+------
 
 .. image:: _static/12_control_panel_tab_twilio.png
     :align: center
 
 Twilio number
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 Your `Twilio <https://www.twilio.com/>`_ AccountSID and AuthToken. Visit your
 Twilio `Account Phone Number
 <https://www.twilio.com/user/account/phone-numbers/incoming>`_ page and check
 the `Manage Numbers` section.
 
 Twilio AccountSID and Twilio AuthToken
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Your `Twilio <https://www.twilio.com/>`_ AccountSID and AuthToken. Visit your
 Twilio `Account Settings <https://www.twilio.com/user/account/settings>`_ page
 and check the `API Credentials` section.
 
 Security
-------------------------------------------------
+--------
 
 .. image:: _static/13_control_panel_tab_security.png
     :align: center
 
 Secret Key
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
 Site secret key - can be any string. See it as some sort of a password.
 
 Token lifetime
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 Lifetime of the login- and the mobile number reset- codes. Defaults to 5
 minutes (300 seconds).
 
 Notes
-================================================
+=====
 It's important that SMS Authenticator comes as first in the
 ZMI -> acl_users -> Authentication.
 
@@ -223,23 +223,23 @@ Tested in combination with the following products:
   `SMSAuthenticator` comes as first, `LoginLockout` as second. All works fine.
 
 Documentation
-================================================
+=============
 See the documentation at:
 
 - http://collectivesmsauthenticator.readthedocs.org/en/latest/
 - http://pythonhosted.org/collective.smsauthenticator/
 
 Support
-================================================
+=======
 For feature requests or bugs, open an issue. For questions, send us an email to
 info@gw20e.com.
 
 License
-================================================
+=======
 GPL 2.0
 
 Authors & Copyright
-================================================
+===================
 Copyright (C) 2014 `Goldmund, Wyldebeast & Wunderliebe <http://www.goldmund-wyldebeast-wunderliebe.nl/>`_.
 
 Authors listed in alphabetic order (by name):
@@ -248,7 +248,7 @@ Authors listed in alphabetic order (by name):
 - Peter Uittenbroek
 
 TODOs and Roadmap
-================================================
+=================
 See `TODOS.rst <https://raw.github.com/collective/collective.smsauthenticator/master/TODOS.rst>`_
 file for the list of TODOs.
 
