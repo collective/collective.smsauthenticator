@@ -1,5 +1,10 @@
 Changelog
 ================================================
+
+0.3.2 (unreleased)
+------------------------------------------------
+- Expand the uninstall functionality with proper removal of persistne objects [puittenbroek]
+
 0.3.1 (2015-02-12)
 ------------------------------------------------
 - Clean product uninstall (also the PAS plugin). [barseghyanartur]
@@ -16,21 +21,21 @@ Changelog
   which doesn't need the twofactor properties. We shortcut the subscriber if 
   it's a Zope account being added. See plone.api docs for issue with 'scripts':
   http://docs.plone.org/external/plone.api/docs/api/exceptions.html#plone.api.exc.CannotGetPortalError
-  [thepjot]
+  [puittenbroek]
 
 0.2.8 (2014-07-07)
 ------------------------------------------------
 
 - Use source_users IAutheticationPlugin for password check to prevent 
-  recursive loop [thepjot]
-- Better return values, we always return None in our pas plugin [thepjot]
-- Add 'enableAutoFocus' forms to enable auto focus [thepjot]
+  recursive loop [puittenbroek]
+- Better return values, we always return None in our pas plugin [puittenbroek]
+- Add 'enableAutoFocus' forms to enable auto focus [puittenbroek]
 
 0.2.7 (2014-06-20)
 ------------------------------------------------
 
-- Direct user to a 'reset email sent' page instead of loginfom [thepjot]
-- Improve/change some help texts [thepjot]
+- Direct user to a 'reset email sent' page instead of loginfom [puittenbroek]
+- Improve/change some help texts [puittenbroek]
 
 0.2.6 (2014-06-19)
 ------------------------------------------------
