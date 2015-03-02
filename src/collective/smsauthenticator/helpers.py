@@ -13,7 +13,11 @@ from zope.component import getUtility
 from zope.globalrequest import getRequest
 from zope.i18nmessageid import MessageFactory
 
-from twilio.rest import TwilioRestClient, TwilioRestException
+from twilio.rest import TwilioRestClient
+try:
+    from twilio.rest.exceptions import TwilioRestException as TwilioException
+except ImportError:
+    from twilio import TwilioException
 
 from plone.registry.interfaces import IRegistry
 from plone import api
@@ -497,7 +501,7 @@ def send_sms(mobile_number, message):
             body=message
             )
         return True
-    except TwilioRestException as e:
+    except TwilioException as e:
         # Log in the error_log
         logger.exception(e)
         return False
