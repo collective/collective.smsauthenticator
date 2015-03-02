@@ -13,7 +13,7 @@ from zope.component import getUtility
 from zope.globalrequest import getRequest
 from zope.i18nmessageid import MessageFactory
 
-from twilio.rest import TwilioRestClient
+from twilio.rest import TwilioRestClient, TwilioRestException
 
 from plone.registry.interfaces import IRegistry
 from plone import api
@@ -476,6 +476,7 @@ def is_whitelisted_client(request=None):
 
     return False
 
+
 def send_sms(mobile_number, message):
     """
     Sends an SMS to the monile number given for mobile number reset confirmation.
@@ -486,18 +487,19 @@ def send_sms(mobile_number, message):
     """
     settings = get_app_settings()
 
-    sms_client = TwilioRestClient(settings.twilio_account_sid, settings.twilio_auth_token)
+    sms_client = TwilioRestClient(settings.twilio_account_sid,
+                                  settings.twilio_auth_token)
 
     try:
         sms_client.sms.messages.create(
-            to = mobile_number,
-            from_ = settings.twilio_number,
-            body = message
+            to=mobile_number,
+            from_=settings.twilio_number,
+            body=message
             )
         return True
-    except Exception as e:
+    except TwilioRestException as e:
         # Log in the error_log
-        logger.debug(e)
+        logger.exception(e)
         return False
 
 def send_mobile_number_reset_confirmation_code_sms(mobile_number, code):
