@@ -195,7 +195,8 @@ class TokenForm(form.SchemaForm):
 
         request = self.request
         response = request['RESPONSE']
-        response.setCookie('__ac', '', path='/')
+        if not request['REQUEST_METHOD'] == 'POST':
+            response.setCookie('__ac', '', path='/')
 
         # Updating the description
         token_field = self.fields.get('token')
