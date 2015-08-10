@@ -5,6 +5,7 @@ Changelog
 ------------------------------------------------
 - Expand the uninstall functionality with proper removal of persistne objects [puittenbroek]
 - Better error logging [puittenbroek]
+- Don't logout user when doing a POST [puittenbroek]
 
 0.3.1 (2015-02-12)
 ------------------------------------------------
