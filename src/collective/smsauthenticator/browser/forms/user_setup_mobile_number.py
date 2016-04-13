@@ -44,7 +44,7 @@ class SetupMobileNumberForm(form.SchemaForm):
     description = _(u"To setup two-step verification you need to enter your mobile phone number"
                     u"to which you will be receiving SMS messages with login codes.")
     css_class = "enableAutoFocus"
-    
+
     @button.buttonAndHandler(_('Verify'))
     def handleSubmit(self, action):
         if bool(api.user.is_anonymous()) is True:

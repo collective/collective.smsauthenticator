@@ -8,6 +8,7 @@ from zope.schema import TextLine
 from zope.i18nmessageid import MessageFactory
 
 from z3c.form import button, field
+from zope.i18n import translate
 
 from plone.directives import form
 from plone import api
@@ -101,7 +102,7 @@ class TokenForm(form.SchemaForm):
                             }
                         )
                 IStatusMessage(self.request).addStatusMessage(
-                    _("Invalid data. Details: {0}".format(' '.join(user_data_validation_result.reason))), 'error'
+                    _("Invalid data. Details: {0}").format(' '.join(user_data_validation_result.reason)), 'error'
                     )
                 return
 
@@ -159,8 +160,11 @@ class TokenForm(form.SchemaForm):
                             }
                         )
                 IStatusMessage(self.request).addStatusMessage(
-                    _("Invalid data. Details: {0}".format(' '.join(user_data_validation_result.reason))), 'error'
-                    )
+                    _("Invalid data. Details: {0}").format(
+                        ' '.join(user_data_validation_result.reason)
+                     ),
+                    'error'
+                )
                 return
 
         mobile_number_authentication_code = generate_code(user)
@@ -202,12 +206,13 @@ class TokenForm(form.SchemaForm):
         token_field = self.fields.get('token')
         if token_field:
             token_field.field.description = _(
-                """Enter the login code sent to your mobile number\
-                If you have somehow lost your mobile number, request a reset\
-                <a href='{0}/@@request-mobile-number-reset'>here</a>.\
-                If you didn't receive an SMS message, resend it by clicking\
-                the Resend SMS button below.""".format(self.context.absolute_url())
-                )
+                'token_field_description',
+                default="""Enter the login code sent to your mobile number
+If you have somehow lost your mobile number, request a reset
+<a href='${absolute_url}/@@request-mobile-number-reset'>here</a>.
+If you didn't receive an SMS message, resend it by clicking
+the Resend SMS button below.""",
+                mapping={'absolute_url': self.context.absolute_url()})
 
         return super(TokenForm, self).updateFields(*args, **kwargs)
 
