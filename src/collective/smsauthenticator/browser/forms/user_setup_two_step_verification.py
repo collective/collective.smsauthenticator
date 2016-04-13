@@ -44,7 +44,7 @@ class SetupTwoStepVerificationForm(form.SchemaForm):
     label = _("Setup two-step verification")
     description = _(u"Complete the two-step verification setup by confirming your mobile number")
     css_class = "enableAutoFocus"
-    
+
     @button.buttonAndHandler(_('Verify'))
     def handleSubmit(self, action):
         if bool(api.user.is_anonymous()) is True:
@@ -86,7 +86,7 @@ class SetupTwoStepVerificationForm(form.SchemaForm):
             reason = _("Invalid token or token expired.")
 
         if reason is not None:
-            IStatusMessage(self.request).addStatusMessage(_("Setup failed! {0}".format(reason)), 'error')
+            IStatusMessage(self.request).addStatusMessage(_("Setup failed! {0}").format(reason), 'error')
             redirect_url = "{0}/@@setup-two-step-verification".format(self.context.absolute_url())
 
         self.request.response.redirect(redirect_url)

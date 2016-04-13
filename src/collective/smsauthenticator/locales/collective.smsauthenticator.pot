@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-02-12 15:59+0000\n"
+"POT-Creation-Date: 2016-04-13 11:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,391 +17,474 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.smsauthenticator\n"
 
-#: ./browser/forms/reset_mobile_number.py:60
+#: ../browser/forms/reset_mobile_number.py:60
 msgid "(Re)set your two-step verification mobile number"
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:93
+#: ../browser/forms/reset_mobile_number.py:93
 msgid "(Re)setting of the mobile number failed! {0}"
 msgstr ""
 
-#: ./browser/forms/user_setup_mobile_number.py:83
-msgid "A confirmation SMS message has been sent to the mobile number specified."
+#: ../browser/forms/user_setup_mobile_number.py:83
+msgid ""
+"A confirmation SMS message has been sent to the mobile number specified."
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:59
-msgid "After submitting this form, you will receive an e-mail with a link and a SMS with a code.     <br/><br/> To successfully verify your mobile number, open the link from your e-mail in a browser and enter the code from your SMS in the form."
+#: ../browser/forms/request_mobile_number_reset.py:59
+msgid ""
+"After submitting this form, you will receive an e-mail with a link and a SMS "
+"with a code.     <br/><br/> To successfully verify your mobile number, open "
+"the link from your e-mail in a browser and enter the code from your SMS in "
+"the form."
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:163
-msgid "An email with further instructions for (re)setting your mobile number has been sent."
+#: ../browser/templates/show_all_user_ips.pt:21
+msgid "All user IPs"
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:126
+#: ../browser/templates/reset_mobile_number_succes.pt:11
+msgid ""
+"An e-mail has been sent to your e-mailadres with a link to complete your "
+"request. <br />Please open the link provided in the e-mail and enter the "
+"code received on your mobile phone."
+msgstr ""
+
+#: ../browser/forms/request_mobile_number_reset.py:163
+msgid ""
+"An email with further instructions for (re)setting your mobile number has "
+"been sent."
+msgstr ""
+
+#: ../browser/forms/request_mobile_number_reset.py:126
 msgid "An error occured while sending the SMS to the number specified."
 msgstr ""
 
-#: ./browser/controlpanel.py:92
+#: ../browser/controlpanel.py:92
 msgid "Authentication token lifetime in seconds."
 msgstr ""
 
-#: ./userdataschema.py:82
+#: ../userdataschema.py:82
 msgid "Automatically generated"
 msgstr ""
 
-#: ./userdataschema.py:100
+#: ../userdataschema.py:100
 msgid "Automatically generated each time SMS message is sent"
 msgstr ""
 
-#: ./userdataschema.py:106
+#: ../userdataschema.py:106
 msgid "Automatically generated each time user logs in"
 msgstr ""
 
-#: ./browser/controlpanel.py:166
+#: ../browser/controlpanel.py:166
 msgid "Cancel"
 msgstr ""
 
-#: ./browser/controlpanel.py:163
+#: ../browser/controlpanel.py:163
 msgid "Changes saved."
 msgstr ""
 
-#: ./userdataschema.py:93
+#: ../userdataschema.py:93
 msgid "Code to reset the mobile number (sent by SMS)"
 msgstr ""
 
-#: ./browser/forms/user_setup_two_step_verification.py:45
-msgid "Complete the two-step verification setup by confirming your mobile number"
+#: ../browser/forms/user_setup_two_step_verification.py:45
+msgid ""
+"Complete the two-step verification setup by confirming your mobile number"
 msgstr ""
 
-#: ./browser/forms/token.py:50
-msgid "Confirm your login by entering the login code sent to your mobile number by SMS."
+#: ../browser/forms/token.py:51
+msgid ""
+"Confirm your login by entering the login code sent to your mobile number by "
+"SMS."
 msgstr ""
 
-#: ./profiles/default/actions.xml
+#: ../browser/templates/show_all_user_ips.pt:26
+msgid "Date"
+msgstr ""
+
+#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:14
+msgid ""
+"Dear ${username}: You have requested to reset your SMS Authenticator mobile "
+"number. Click ${reset_link} to reset your mobile number."
+msgstr ""
+
+#: ../profiles/default/actions.xml
 msgid "Disable two-step verification"
 msgstr ""
 
-#: ./browser/helpers.py:18
+#: ../browser/helpers.py:18
 msgid "Disable two-step verification for all users"
 msgstr ""
 
-#: ./browser/controlpanel.py:168
+#: ../browser/controlpanel.py:168
 msgid "Edit cancelled."
 msgstr ""
 
-#: ./profiles/default/actions.xml
+#: ../profiles/default/actions.xml
 msgid "Enable two-step verification"
 msgstr ""
 
-#: ./browser/helpers.py:15
+#: ../browser/helpers.py:15
 msgid "Enable two-step verification for all users"
 msgstr ""
 
-#: ./userdataschema.py:66
+#: ../userdataschema.py:66
 msgid "Enable two-step verification."
 msgstr ""
 
-#: ./userdataschema.py:67
-msgid "Enable/disable the two-step verification. Click                      <a href='@@setup-mobile-number'>here</a> to set it up or                      <a href='@@disable-two-step-verification'>here</a> to disable it."
+#: ../userdataschema.py:67
+msgid ""
+"Enable/disable the two-step verification. Click                      <a "
+"href='@@setup-mobile-number'>here</a> to set it up or                      "
+"<a href='@@disable-two-step-verification'>here</a> to disable it."
 msgstr ""
 
-#: ./browser/forms/token.py:36
+#: ../browser/forms/token.py:37
 msgid "Enter code"
 msgstr ""
 
-#: ./browser/forms/token.py:203
-msgid "Enter the login code sent to your mobile number                If you have somehow lost your mobile number, request a reset                <a href='{0}/@@request-mobile-number-reset'>here</a>.                If you didn't receive an SMS message, resend it by clicking                the Resend SMS button below."
-msgstr ""
-
-#: ./browser/forms/token.py:37
+#: ../browser/forms/token.py:38
 msgid "Enter the login code sent to your mobile number."
 msgstr ""
 
-#: ./browser/forms/user_setup_two_step_verification.py:30
+#: ../browser/forms/user_setup_two_step_verification.py:30
 msgid "Enter the verification code to activate two-step verification "
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:42
+#: ../browser/forms/reset_mobile_number.py:42
 msgid "Enter the verification code you received on your mobile phone."
 msgstr ""
 
-#: ./browser/controlpanel.py:56
+#: ../browser/controlpanel.py:56
 msgid "Enter your Twilio (phone) number."
 msgstr ""
 
-#: ./browser/controlpanel.py:63
+#: ../browser/controlpanel.py:63
 msgid "Enter your Twilio AccountSID."
 msgstr ""
 
-#: ./browser/controlpanel.py:70
+#: ../browser/controlpanel.py:70
 msgid "Enter your Twilio AuthToken."
 msgstr ""
 
-#: ./browser/forms/user_setup_mobile_number.py:31
+#: ../browser/forms/user_setup_mobile_number.py:31
 msgid "Enter your mobile number to be used for two-step verification."
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:48
-msgid "Enter your mobile phone number. Use the international format.            <br/>Example Dutch number: +31699555555            <br/>Example International number: +49234555776"
+#: ../browser/forms/request_mobile_number_reset.py:48
+msgid ""
+"Enter your mobile phone number. Use the international format.            "
+"<br/>Example Dutch number: +31699555555            <br/>Example "
+"International number: +49234555776"
 msgstr ""
 
-#: ./browser/controlpanel.py:84
-msgid "Enter your secret key for the site here. When choosing a secret key, think of it as some sort of a password."
+#: ../browser/controlpanel.py:84
+msgid ""
+"Enter your secret key for the site here. When choosing a secret key, think "
+"of it as some sort of a password."
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:43
+#: ../browser/forms/request_mobile_number_reset.py:43
 msgid "Enter your username for verification."
 msgstr ""
 
-#: ./browser/disable_two_step_verification.py:23
-#: ./browser/forms/user_setup_mobile_number.py:51
-#: ./browser/forms/user_setup_two_step_verification.py:51
+#: ../browser/disable_two_step_verification.py:23
+#: ../browser/forms/user_setup_mobile_number.py:51
+#: ../browser/forms/user_setup_two_step_verification.py:51
 msgid "Forbidden for anonymous"
 msgstr ""
 
-#: ./browser/controlpanel.py:32
+#: ../browser/controlpanel.py:32
 msgid "Globally enabled"
 msgstr ""
 
-#: ./browser/controlpanel.py:33
-msgid "If checked, globally enables the two-step verification for all users; otherwise - each user configures it himself. Note, that unchecking the checkbox does not disable the two-step verification for all users."
+#: ../browser/templates/show_all_user_ips.pt:25
+#: ../browser/templates/show_unique_user_ips.pt:23
+msgid "IP"
 msgstr ""
 
-#: ./browser/forms/token.py:104
-msgid "Invalid data. Details: {0} "
+#: ../browser/controlpanel.py:33
+msgid ""
+"If checked, globally enables the two-step verification for all users; "
+"otherwise - each user configures it himself. Note, that unchecking the "
+"checkbox does not disable the two-step verification for all users."
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:172
+#: ../browser/forms/request_mobile_number_reset.py:55
+msgid "Important note"
+msgstr ""
+
+#: ../browser/forms/token.py:105
+msgid "Invalid data. Details: {0}"
+msgstr ""
+
+#: ../browser/forms/reset_mobile_number.py:171
 msgid "Invalid mobile number reset token"
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:108
+#: ../browser/forms/reset_mobile_number.py:108
 msgid "Invalid mobile number reset token."
 msgstr ""
 
-#: ./browser/forms/user_setup_mobile_number.py:90
+#: ../browser/forms/user_setup_mobile_number.py:90
 msgid "Invalid mobile number."
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:139
-#: ./browser/forms/token.py:126
-#: ./browser/forms/user_setup_two_step_verification.py:86
+#: ../browser/forms/reset_mobile_number.py:138
+#: ../browser/forms/token.py:127
+#: ../browser/forms/user_setup_two_step_verification.py:86
 msgid "Invalid token or token expired."
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:171
+#: ../browser/forms/request_mobile_number_reset.py:171
 msgid "Invalid username."
 msgstr ""
 
-#: ./userdataschema.py:99
+#: ../userdataschema.py:99
 msgid "Last authentication code"
 msgstr ""
 
-#: ./userdataschema.py:105
+#: ../userdataschema.py:105
 msgid "List of IPs user logged from"
 msgstr ""
 
-#: ./skins/smsauthenticator_custom/login_next.cpy:21
+#: ../skins/smsauthenticator_custom/login_next.cpy:21
 msgid "Login failed"
 msgstr ""
 
-#: ./browser/controlpanel.py:49
+#: ../browser/controlpanel.py:49
 msgid "Main"
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:47
-#: ./browser/forms/user_setup_mobile_number.py:30
-#: ./userdataschema.py:75
+#: ../browser/forms/request_mobile_number_reset.py:47
+#: ../browser/forms/user_setup_mobile_number.py:30
+#: ../userdataschema.py:75
 msgid "Mobile number"
 msgstr ""
 
-#: ./browser/forms/token.py:82
+#: ../browser/forms/token.py:83
 msgid "No token provided!"
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:175
+#: ../browser/forms/request_mobile_number_reset.py:175
 msgid "Request for mobile number reset is failed! {0}"
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:71
+#: ../browser/forms/request_mobile_number_reset.py:71
+#: ../browser/templates/reset_mobile_number_succes.pt:9
 msgid "Request to (re)set the mobile number"
 msgstr ""
 
-#: ./skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:7
+#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:9
 msgid "Request to reset the SMS Authenticator mobile number"
 msgstr ""
 
-#: ./browser/forms/token.py:128
+#: ../browser/forms/token.py:129
 msgid "Resend SMS"
 msgstr ""
 
-#: ./browser/controlpanel.py:111
-#: ./profiles/default/controlpanel.xml
+#: ../browser/controlpanel.py:111
+#: ../browser/templates/show_all_user_ips.pt:18
+#: ../browser/templates/show_unique_user_ips.pt:16
 msgid "SMS Authenticator"
 msgstr ""
 
-#: ./browser/controlpanel.py:112
-#: ./browser/helpers.py:12
+#: ../browser/controlpanel.py:112
+#: ../browser/helpers.py:12
 msgid "SMS Authenticator configuration"
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:41
+#: ../browser/forms/reset_mobile_number.py:41
 msgid "SMS verification code"
 msgstr ""
 
-#: ./browser/controlpanel.py:136
+#: ../browser/controlpanel.py:136
 msgid "Save"
 msgstr ""
 
-#: ./browser/controlpanel.py:83
+#: ../browser/controlpanel.py:83
 msgid "Secret Key"
 msgstr ""
 
-#: ./userdataschema.py:81
+#: ../userdataschema.py:81
 msgid "Secret key"
 msgstr ""
 
-#: ./browser/controlpanel.py:99
+#: ../browser/controlpanel.py:99
 msgid "Security"
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:142
-#: ./browser/forms/user_setup_mobile_number.py:93
-#: ./browser/forms/user_setup_two_step_verification.py:89
+#: ../browser/forms/reset_mobile_number.py:141
+#: ../browser/forms/user_setup_mobile_number.py:93
+#: ../browser/forms/user_setup_two_step_verification.py:89
 msgid "Setup failed! {0}"
 msgstr ""
 
-#: ./browser/forms/user_setup_mobile_number.py:43
+#: ../browser/forms/user_setup_mobile_number.py:43
 msgid "Setup mobile number for two-step verification"
 msgstr ""
 
-#: ./browser/forms/user_setup_two_step_verification.py:44
+#: ../browser/forms/user_setup_two_step_verification.py:44
 msgid "Setup two-step verification"
 msgstr ""
 
-#: ./browser/helpers.py:21
+#: ../browser/helpers.py:21
 msgid "Show all user IPs"
 msgstr ""
 
-#: ./browser/helpers.py:24
+#: ../browser/helpers.py:24
 msgid "Show unique user IPs"
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:75
+#: ../browser/forms/request_mobile_number_reset.py:75
 msgid "Submit"
 msgstr ""
 
-#: ./browser/forms/user_setup_mobile_number.py:44
-msgid "To setup two-step verification you need to enter your mobile phone numberto which you will be receiving SMS messages with login codes."
+#: ../browser/forms/user_setup_mobile_number.py:44
+msgid ""
+"To setup two-step verification you need to enter your mobile phone numberto "
+"which you will be receiving SMS messages with login codes."
 msgstr ""
 
-#: ./browser/controlpanel.py:91
+#: ../browser/controlpanel.py:91
 msgid "Token lifetime"
 msgstr ""
 
-#: ./userdataschema.py:87
+#: ../userdataschema.py:87
 msgid "Token to reset the mobile number"
 msgstr ""
 
-#: ./browser/controlpanel.py:77
+#: ../browser/controlpanel.py:77
 msgid "Twilio"
 msgstr ""
 
-#: ./browser/controlpanel.py:62
+#: ../browser/controlpanel.py:62
 msgid "Twilio AccountSID"
 msgstr ""
 
-#: ./browser/controlpanel.py:69
+#: ../browser/controlpanel.py:69
 msgid "Twilio AuthToken"
 msgstr ""
 
-#: ./browser/controlpanel.py:55
+#: ../browser/controlpanel.py:55
 msgid "Twilio number"
 msgstr ""
 
-#: ./browser/forms/token.py:49
+#: ../browser/forms/token.py:50
 msgid "Two-step verification"
 msgstr ""
 
-#: ./pas_plugin.py:130
-msgid "Two-step verification is enabled for your account, but you haven't specified a mobile number yet! In order to be able to log in, you have to go through mobile number recovery procedure first."
+#: ../pas_plugin.py:130
+msgid ""
+"Two-step verification is enabled for your account, but you haven't specified "
+"a mobile number yet! In order to be able to log in, you have to go through "
+"mobile number recovery procedure first."
 msgstr ""
 
-#: ./browser/forms/user_setup_two_step_verification.py:79
+#: ../browser/forms/user_setup_two_step_verification.py:79
 msgid "Two-step verification is successfully enabled for your account."
 msgstr ""
 
-#: ./browser/controlpanel.py:41
-msgid "Two-step verification will be ommit for users that log in from white listed addresses."
+#: ../browser/controlpanel.py:41
+msgid ""
+"Two-step verification will be ommit for users that log in from white listed "
+"addresses."
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:72
+#: ../browser/templates/show_unique_user_ips.pt:19
+msgid "Unique user IPs"
+msgstr ""
+
+#: ../browser/forms/request_mobile_number_reset.py:72
 msgid "Use the form below to (re)set your mobile phone number."
 msgstr ""
 
-#: ./helpers.py:511
-msgid "Use this code to confirm your mobile phone reset: {0}"
+#: ../helpers.py:524
+msgid "Use this code to confirm your mobile phone reset: ${code}"
 msgstr ""
 
-#: ./helpers.py:533
-msgid "Use this code to confirm your mobile phone setup: {0}"
+#: ../helpers.py:546
+msgid "Use this code to confirm your mobile phone setup: ${code}"
 msgstr ""
 
-#: ./helpers.py:522
-msgid "Use this code to login: {0}"
+#: ../helpers.py:535
+msgid "Use this code to login: ${code}"
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:91
+#: ../browser/templates/show_all_user_ips.pt:27
+msgid "User"
+msgstr ""
+
+#: ../browser/forms/reset_mobile_number.py:91
 msgid "User not found {0}."
 msgstr ""
 
-#: ./browser/forms/request_mobile_number_reset.py:42
+#: ../browser/forms/request_mobile_number_reset.py:42
 msgid "Username"
 msgstr ""
 
-#: ./userdataschema.py:76
+#: ../userdataschema.py:76
 msgid "Users' mobile number"
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:71
-#: ./browser/forms/token.py:59
-#: ./browser/forms/user_setup_mobile_number.py:48
+#: ../browser/forms/reset_mobile_number.py:71
+#: ../browser/forms/token.py:60
+#: ../browser/forms/user_setup_mobile_number.py:48
 msgid "Verify"
 msgstr ""
 
-#: ./skins/smsauthenticator_custom/login_next.cpy:61
+#: ../skins/smsauthenticator_custom/login_next.cpy:61
 msgid "Welcome! You are now logged in."
 msgstr ""
 
-#: ./browser/controlpanel.py:40
+#: ../browser/controlpanel.py:40
 msgid "White-listed IP addresses"
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:61
-msgid "You have received (or will shortly receive) an SMS with an verification code.        <br/>After successfully submitting this form, you will be automatically logged in."
+#: ../browser/forms/reset_mobile_number.py:61
+msgid ""
+"You have received (or will shortly receive) an SMS with an verification "
+"code.        <br/>After successfully submitting this form, you will be "
+"automatically logged in."
 msgstr ""
 
-#: ./browser/forms/reset_mobile_number.py:125
-msgid "You have successfully changed/set your mobile number.                      You're now logged in."
+#: ../browser/forms/reset_mobile_number.py:124
+msgid ""
+"You have successfully changed/set your mobile number.                      "
+"You're now logged in."
 msgstr ""
 
-#: ./browser/disable_two_step_verification_for_all_users.py:28
-msgid "You have successfully disabled the two-step verification for all users."
+#: ../browser/disable_two_step_verification_for_all_users.py:28
+msgid ""
+"You have successfully disabled the two-step verification for all users."
 msgstr ""
 
-#: ./browser/disable_two_step_verification.py:39
-msgid "You have successfully disabled the two-step verification for your account."
+#: ../browser/disable_two_step_verification.py:39
+msgid ""
+"You have successfully disabled the two-step verification for your account."
 msgstr ""
 
-#: ./browser/enable_two_step_verification_for_all_users.py:28
+#: ../browser/enable_two_step_verification_for_all_users.py:28
 msgid "You have successfully enabled the two-step verification for all users."
 msgstr ""
 
-#: ./browser/forms/user_setup_two_step_verification.py:31
-msgid "You should have received an SMS message to the mobile number specified. Please, enter the code below."
+#: ../browser/forms/user_setup_two_step_verification.py:31
+msgid ""
+"You should have received an SMS message to the mobile number specified. "
+"Please, enter the code below."
 msgstr ""
 
-#: ./browser/forms/token.py:183
+#: ../browser/forms/token.py:187
 msgid "Your SMS has just been resent."
+msgstr ""
+
+#. Default: "here"
+#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:14
+msgid "reset_link_title"
+msgstr ""
+
+#. Default: "Enter the login code sent to your mobile number\nIf you have somehow lost your mobile number, request a reset\n<a href='${absolute_url}/@@request-mobile-number-reset'>here</a>.\nIf you didn't receive an SMS message, resend it by clicking\nthe Resend SMS button below."
+#: ../browser/forms/token.py:208
+msgid "token_field_description"
 msgstr ""
 
