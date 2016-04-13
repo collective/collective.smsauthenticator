@@ -11,5 +11,5 @@ Content-Type: text/plain; charset=<span tal:replace="python:options['charset']" 
 <p i18n:translate="" tal:omit-tag="">Dear <span i18n:name="username" tal:replace="member/getUserName" />:
 You have requested to reset your SMS Authenticator mobile number.
 
-Click <a i18n:name="reset_link" href="{mobile_number_reset_url}" i18n:translate="reset_link_title">here</a> to reset your mobile number.</p>
+Click on this link {mobile_number_reset_url} to reset your mobile number.</p>
 </tal:root>

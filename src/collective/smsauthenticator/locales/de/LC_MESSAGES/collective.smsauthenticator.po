@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-04-13 11:16+0000\n"
-"PO-Revision-Date: 2016-04-13 13:18+0200\n"
+"POT-Creation-Date: 2016-04-13 14:23+0000\n"
+"PO-Revision-Date: 2016-05-03 10:58+0200\n"
 "Last-Translator: Rene Jochum <info@smile4.at>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -116,18 +116,19 @@ msgstr ""
 msgid "Date"
 msgstr "Datum"
 
-#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:14
+#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:11
 msgid ""
 "Dear ${username}: You have requested to reset your SMS Authenticator mobile "
-"number. Click ${reset_link} to reset your mobile number."
+"number. Click on this link {mobile_number_reset_url} to reset your mobile "
+"number."
 msgstr ""
 "Hallo ${username},\n"
 "\n"
-"wir haben von Ihnen eine Anforderung erhalten Ihre 2-Faktor "
-"Authentifizierungsnummer zu Ändern.\n"
-"Drücken Sie ${reset_link} um Ihre Handynummer zu ändern.\n"
+"Sie haben Angefragt Ihre Telefonnummer zu ändern.\n"
+"Klicken Sie auf diesen Link {mobile_number_reset_url} um Ihre Telefonnummer "
+"zu ändern.\n"
 "\n"
-"Vielen Dank."
+"Vielen Dank.a"
 
 #: ../profiles/default/actions.xml
 msgid "Disable two-step verification"
@@ -243,7 +244,7 @@ msgid ""
 msgstr ""
 "Wenn ausgewählt wird die 2-Faktor Authentifizierung global eingeschaltet, "
 "ansonsten kann jeder Benutzer diese selbst konfigurieren. Wenn Sie diese "
-"Auswahl aufheben werden die 2-Faktor Authentifizierung allerdings nicht für "
+"Auswahl aufheben wird die 2-Faktor Authentifizierung allerdings nicht für "
 "alle Benutzer abgeschaltet."
 
 #: ../browser/forms/request_mobile_number_reset.py:55
@@ -528,11 +529,6 @@ msgstr ""
 #: ../browser/forms/token.py:187
 msgid "Your SMS has just been resent."
 msgstr "Ihr SMS wurde erneut verschickt."
-
-#. Default: "here"
-#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:14
-msgid "reset_link_title"
-msgstr "Hier"
 
 #. Default: "Enter the login code sent to your mobile number\nIf you have somehow lost your mobile number, request a reset\n<a href='${absolute_url}/@@request-mobile-number-reset'>here</a>.\nIf you didn't receive an SMS message, resend it by clicking\nthe Resend SMS button below."
 #: ../browser/forms/token.py:208
