@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-04-13 11:16+0000\n"
+"POT-Creation-Date: 2016-04-13 14:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,10 +102,11 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:14
+#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:11
 msgid ""
 "Dear ${username}: You have requested to reset your SMS Authenticator mobile "
-"number. Click ${reset_link} to reset your mobile number."
+"number. Click on this link {mobile_number_reset_url} to reset your mobile "
+"number."
 msgstr ""
 
 #: ../profiles/default/actions.xml
@@ -476,11 +477,6 @@ msgstr ""
 
 #: ../browser/forms/token.py:187
 msgid "Your SMS has just been resent."
-msgstr ""
-
-#. Default: "here"
-#: ../skins/smsauthenticator_custom/request_mobile_number_reset_email.pt:14
-msgid "reset_link_title"
 msgstr ""
 
 #. Default: "Enter the login code sent to your mobile number\nIf you have somehow lost your mobile number, request a reset\n<a href='${absolute_url}/@@request-mobile-number-reset'>here</a>.\nIf you didn't receive an SMS message, resend it by clicking\nthe Resend SMS button below."
