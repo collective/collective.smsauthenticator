@@ -3,9 +3,15 @@ Changelog
 
 0.3.2 (unreleased)
 ------------------------------------------------
-- Expand the uninstall functionality with proper removal of persistne objects [puittenbroek]
+- Expand the uninstall functionality with proper removal of persisent objects [puittenbroek]
 - Better error logging [puittenbroek]
 - Don't logout user when doing a POST [puittenbroek]
+- Allow admin's to change fields on the user's profile [puittenbroek]
+- Add a whitelist of user's who are excluded from two factor [puittenbroek]
+- Use newer version of Twilio api (=> 5.4.0) so we can see the 'Delivered' status [puittenbroek]
+- pep8 some files [puittenbroek]
+- Only enable two factor for all users if it was actually changed, turned on [puittenbroek]
+- Always sent a (new!) code upon login [puittenbroek]
 
 0.3.1 (2015-02-12)
 ------------------------------------------------
