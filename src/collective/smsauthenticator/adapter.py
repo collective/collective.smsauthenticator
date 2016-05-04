@@ -18,8 +18,7 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
         return self.context.getProperty('enable_two_step_verification', '')
 
     def set_enable_two_step_verification(self, value):
-        return # Read only
-        #return self.context.setMemberProperties({'enable_two_step_verification': value})
+        return self.context.setMemberProperties({'enable_two_step_verification': value})
 
     enable_two_step_verification = property(
         get_enable_two_step_verification,
@@ -33,7 +32,7 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
         return self.context.getProperty('mobile_number', '')
 
     def set_mobile_number(self, value):
-        return # Read only
+        return self.context.setMemberProperties({'mobile_number': value})
 
     mobile_number = property(
         get_mobile_number,
@@ -47,7 +46,7 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
         return self.context.getProperty('two_step_verification_secret', '')
 
     def set_two_step_verification_secret(self, value):
-        return # Read only
+        return self.context.setMemberProperties({'two_step_verification_secret': value})
 
     two_step_verification_secret = property(
         get_two_step_verification_secret,
@@ -61,7 +60,8 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
         return self.context.getProperty('mobile_number_reset_token', '')
 
     def set_mobile_number_reset_token(self, value):
-        return # Read only
+        return self.context.setMemberProperties(
+            {'mobile_number_reset_token': value})
 
     mobile_number_reset_token = property(
         get_mobile_number_reset_token,
@@ -75,7 +75,8 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
         return self.context.getProperty('mobile_number_reset_code', '')
 
     def set_mobile_number_reset_code(self, value):
-        return # Read only
+        return self.context.setMemberProperties(
+            {'mobile_number_reset_code': value})
 
     mobile_number_reset_code = property(
         get_mobile_number_reset_code,

@@ -1,32 +1,27 @@
 """
-The helper module contains various methods for api security and for downloading files
+The helper module contains various methods for api security
 """
+from collective.smsauthenticator.browser.controlpanel\
+    import ISMSAuthenticatorSettings
+from Globals import DevelopmentMode
 from hashlib import sha1
-from uuid import uuid4
+from plone import api
+from plone.registry.interfaces import IRegistry
+from random import randint
+from ska import sign_url, validate_signed_request_data
+from twilio.rest import TwilioRestClient
+from twilio.rest.exceptions import TwilioRestException as TwilioException
 from urllib import unquote, quote
 from urlparse import urlparse
-import logging
-from random import randint
-import time
-
+from uuid import uuid4
 from zope.component import getUtility
 from zope.globalrequest import getRequest
 from zope.i18nmessageid import MessageFactory
 from zope.i18n import translate
 
-from twilio.rest import TwilioRestClient
-try:
-    from twilio.rest.exceptions import TwilioRestException as TwilioException
-except ImportError:
-    from twilio import TwilioException
-
-from plone.registry.interfaces import IRegistry
-from plone import api
-
-from ska import sign_url, validate_signed_request_data
+import logging
 import rebus
-
-from collective.smsauthenticator.browser.controlpanel import ISMSAuthenticatorSettings
+import time
 
 _ = MessageFactory('collective.smsauthenticator')
 
@@ -34,13 +29,15 @@ logger = logging.getLogger("collective.smsauthenticator")
 
 # ******************************************
 
+
 def get_app_settings():
     """
     Gets the SMS Authenticator settings.
     """
     registry = getUtility(IRegistry)
-    settings = registry.forInterface(ISMSAuthenticatorSettings)
+    settings = registry.forInterface(ISMSAuthenticatorSettings, check=False)
     return settings
+
 
 def get_user(username):
     """
@@ -48,17 +45,20 @@ def get_user(username):
     """
     return api.user.get(username=username)
 
+
 def get_username(user=None):
     """
     Gets the username of the user.
 
-    :param user: If given, used to extract the user. Otherwise, ``plone.api.user.get_current`` is used.
+    :param user: If given, used to extract the user. Otherwise,
+        ``plone.api.user.get_current`` is used.
     :return string:
     """
     if user is None:
         user = api.user.get_current()
     if user:
         return user.getUserName()
+
 
 def get_base_url(request=None):
     """
@@ -73,6 +73,7 @@ def get_base_url(request=None):
     parsed_uri = urlparse(request.base)
     return "{0}://{1}/".format(parsed_uri.scheme, parsed_uri.netloc)
 
+
 def get_domain_name(request=None):
     """
     Gets domain name (without HTTP).
@@ -86,6 +87,7 @@ def get_domain_name(request=None):
     parsed_uri = urlparse(request.base)
     return parsed_uri.netloc
 
+
 def generate_secret(user):
     """
     Generates secret for the user.
@@ -93,8 +95,9 @@ def generate_secret(user):
     :param Products.PlonePAS.tools.memberdata user:
     """
     secret = rebus.b32encode(str(uuid4()))
-    user.setMemberProperties(mapping={'two_step_verification_secret': secret,})
+    user.setMemberProperties(mapping={'two_step_verification_secret': secret})
     return secret
+
 
 def get_secret(user=None, hashed=False):
     """
@@ -104,7 +107,7 @@ def get_secret(user=None, hashed=False):
     :param bool hashed: If set to True, hashed version is returned.
     :return string:
     """
-    #TODO: Return hashed version if ``hashed`` is set to True.
+    # TODO: Return hashed version if ``hashed`` is set to True.
     if user is None:
         user = api.user.get_current()
     if user:
@@ -114,16 +117,18 @@ def get_secret(user=None, hashed=False):
         if isinstance(secret, basestring) and secret:
             return secret
 
+
 def get_or_create_secret(user, overwrite=False):
     """
-    Gets or creates token secret for the user given. Checks first if user given has a ``secret`` generated.
-    If not, generate it for him and save it in his profile (``two_step_verification_secret``).
+    Gets or creates token secret for the user given. Checks first if user given
+     has a ``secret`` generated. If not, generate it for him and save it in his
+      profile (``two_step_verification_secret``).
 
-    :param Products.PlonePAS.tools.memberdata user: If provided, used. Otherwise ``plone.api.user.get_current``
-        is used to obtain the user.
+    :param Products.PlonePAS.tools.memberdata user: If provided, used.
+        Otherwise ``plone.api.user.get_current`` is used to obtain the user.
     :return string:
     """
-    #TODO: Return hashed version if ``hashed`` is set to True.
+    # TODO: Return hashed version if ``hashed`` is set to True.
     if user is None:
         user = api.user.get_current()
 
@@ -136,6 +141,7 @@ def get_or_create_secret(user, overwrite=False):
     else:
         return generate_secret(user)
 
+
 def generate_code(user, length=6):
     """
     Gets a random token to reset the mobile number (time based) + random char.
@@ -145,7 +151,9 @@ def generate_code(user, length=6):
     :return string:
     """
     secret = get_or_create_secret(user)
-    return sha1("{0}{1}{2}".format(str(uuid4()), str(randint(0, 9)), secret)).hexdigest()[:8]
+    return sha1("{0}{1}{2}".format(
+        str(uuid4()), str(randint(0, 9)), secret)).hexdigest()[:8]
+
 
 def validate_code(code, prop, user=None):
     """
@@ -163,15 +171,20 @@ def validate_code(code, prop, user=None):
 
     return stored_code == code
 
+
 def validate_mobile_number_reset_code(code, user=None):
     return validate_code(code=code, prop='mobile_number_reset_code', user=user)
 
+
 def validate_mobile_number_authentication_code(code, user=None):
-    return validate_code(code=code, prop='mobile_number_authentication_code', user=user)
+    return validate_code(code=code, prop='mobile_number_authentication_code',
+                         user=user)
+
 
 def get_browser_hash(request=None):
     """
-    Gets browser hash. Adds an extra security layer, since browser version is unlikely to be changed.
+    Gets browser hash. Adds an extra security layer,
+     since browser version is unlikely to be changed.
 
     :param ZPublisher.HTTPRequest request:
     :return string:
@@ -185,6 +198,7 @@ def get_browser_hash(request=None):
         logger.debug(str(e))
         return ''
 
+
 def get_ska_secret_key(request=None, user=None, use_browser_hash=True):
     """
     Gets the `secret_key` to be used in `ska` package.
@@ -195,7 +209,8 @@ def get_ska_secret_key(request=None, user=None, use_browser_hash=True):
 
     :param ZPublisher.HTTPRequest request:
     :param Products.PlonePAS.tools.memberdata user:
-    :param bool use_browser_hash: If set to True, browser hash is used. Otherwise - not. Defaults to True.
+    :param bool use_browser_hash: If set to True, browser hash is used.
+        Otherwise - not. Defaults to True.
     :return string:
     """
     if request is None:
@@ -217,6 +232,7 @@ def get_ska_secret_key(request=None, user=None, use_browser_hash=True):
 
     return "{0}{1}{2}".format(user_secret, browser_hash, ska_secret_key)
 
+
 def is_two_step_verification_globally_enabled():
     """
     Checks if the two-step verification is globally enabled.
@@ -226,16 +242,6 @@ def is_two_step_verification_globally_enabled():
     settings = get_app_settings()
     return settings.globally_enabled
 
-def get_white_listed_ip_addresses():
-    """
-    Gets list of white-listed IP addresses.
-
-    :return list:
-    """
-    settings = get_app_settings()
-    ip_addresses = settings.ip_addresses_whitelist
-    ip_addresses_list = ip_addresses.split('\n')
-    return ip_addresses_list
 
 def get_ska_token_lifetime(settings=None):
     """
@@ -248,10 +254,11 @@ def get_ska_token_lifetime(settings=None):
 
     return settings.ska_token_lifetime
 
+
 def sign_user_data(request=None, user=None, url='@@sms-authenticator-token'):
     """
-    Signs the user data with `ska` package. The secret key is `secret_key` to be used with `ska` is a
-    combination of:
+    Signs the user data with `ska` package. The secret key is `secret_key`
+     to be used with `ska` is a combination of:
 
     - Value of the ``two_step_verification_secret`` (from users' profile).
     - Browser info (hash of)
@@ -275,21 +282,23 @@ def sign_user_data(request=None, user=None, url='@@sms-authenticator-token'):
 
     secret_key = get_ska_secret_key(request=request, user=user)
     signed_url = sign_url(
-        auth_user = user.getUserId(),
-        secret_key = secret_key,
-        url = url,
-        lifetime = token_lifetime
+        auth_user=user.getUserId(),
+        secret_key=secret_key,
+        url=url,
+        lifetime=token_lifetime
     )
     return signed_url
 
+
 def extract_request_data_from_query_string(request_qs):
     """
-    Plone seems to strip/escape some special chars (such as '+') from values and those chars are
-    quite important for us. This method extracts the vars from request QUERY_STRING given and
-    returns them unescaped.
+    Plone seems to strip/escape some special chars (such as '+') from values
+     and those chars are quite important for us. This method extracts the
+     vars from request QUERY_STRING given and returns them unescaped.
 
-    :FIXME: As stated above, for some reason Plone escapes from special chars from the values. If
-    you know what the reason is and if it has some effects on security, please make the changes
+    :FIXME: As stated above, for some reason Plone escapes from special chars
+     from the values. If you know what the reason is and if it has some effects
+     on security, please make the changes
     necessary.
 
     :param string request_qs:
@@ -304,20 +313,22 @@ def extract_request_data_from_query_string(request_qs):
         try:
             key, value = part.split('=', 1)
             request_data.update({key: unquote(value)})
-        except ValueError as e:
+        except ValueError:
             pass
 
     return request_data
 
+
 def extract_request_data(request):
     """
-    Plone seems to strip/escape some special chars (such as '+') from values and those chars are
-    quite important for us. This method extracts the vars from request QUERY_STRING given and
-    returns them unescaped.
+    Plone seems to strip/escape some special chars (such as '+') from values
+     and those chars are quite important for us.
+     This method extracts the vars from request
+     QUERY_STRING given and returns them unescaped.
 
-    :FIXME: As stated above, for some reason Plone escapes from special chars from the values. If
-    you know what the reason is and if it has some effects on security, please make the changes
-    necessary.
+    :FIXME: As stated above, for some reason Plone escapes from special chars
+     from the values. If you know what the reason is and if it has some effects
+     on security, please make the changes necessary.
 
     :param request ZPublisher.HTTPRequest:
     :return dict:
@@ -325,12 +336,14 @@ def extract_request_data(request):
     request_qs = request.get('QUERY_STRING')
     return extract_request_data_from_query_string(request_qs)
 
+
 def extract_next_url_from_referer(request, quote_url=False):
     """
-    Since we override the default Plone functionality (take out the `came_from` from the login form for a
-    very strong reason), we want to make sure that for users, the "came from" functionality stays intact.
-    That why, we check the referer for the `came_from` attributes and if present, redirect to that after
-    successful two-step verification token validation.
+    Since we override the default Plone functionality (take out the `came_from`
+     from the login form for a very strong reason), we want to make sure that
+     for users, the "came from" functionality stays intact. That why, we check
+     the referer for the `came_from` attributes and if present, redirect to
+     that after successful two-step verification token validation.
     :param request ZPublisher.HTTPRequest:
     :return string: Extracted `came_from` URL.
     """
@@ -344,6 +357,7 @@ def extract_next_url_from_referer(request, quote_url=False):
 
     return url
 
+
 def validate_user_data(request, user, use_browser_hash=True):
     """
     Validates the user data.
@@ -352,12 +366,14 @@ def validate_user_data(request, user, use_browser_hash=True):
     :param Products.PlonePAS.tools.memberdata user:
     :return ska.SignatureValidationResult:
     """
-    secret_key = get_ska_secret_key(request=request, user=user, use_browser_hash=use_browser_hash)
+    secret_key = get_ska_secret_key(request=request, user=user,
+                                    use_browser_hash=use_browser_hash)
     validation_result = validate_signed_request_data(
-        data = extract_request_data(request),
-        secret_key = secret_key
+        data=extract_request_data(request),
+        secret_key=secret_key
         )
     return validation_result
+
 
 def has_enabled_two_step_verification(user):
     """
@@ -371,8 +387,9 @@ def has_enabled_two_step_verification(user):
 
     try:
         return user.getProperty('enable_two_step_verification', False)
-    except Exception as e:
+    except Exception:
         return None
+
 
 def enable_two_step_verification_for_users(users=[]):
     """
@@ -385,9 +402,11 @@ def enable_two_step_verification_for_users(users=[]):
         try:
             get_or_create_secret(user)
             if not has_enabled_two_step_verification(user):
-                user.setMemberProperties(mapping={'enable_two_step_verification': True,})
+                user.setMemberProperties(
+                    mapping={'enable_two_step_verification': True})
         except Exception as e:
             logger.debug(str(e))
+
 
 def disable_two_step_verification_for_users(users=[]):
     """
@@ -398,25 +417,25 @@ def disable_two_step_verification_for_users(users=[]):
 
     for user in users:
         try:
-            #get_or_create_secret(user)
+            # get_or_create_secret(user)
             if has_enabled_two_step_verification(user):
                 user.setMemberProperties(
-                    mapping = {
+                    mapping={
                         'enable_two_step_verification': False,
                         'two_step_verification_secret': '',
                         'mobile_number_reset_token': '',
                         'mobile_number_reset_code': '',
-                        #'authentication_token_valid_until': '',
                         'mobile_number_authentication_code': '',
                     }
                     )
         except Exception as e:
             logger.debug(str(e))
 
+
 def extract_ip_address_from_request(request=None):
     """
-    Extracts client's IP address from request. This is not the safest solution, since client
-    may change headers.
+    Extracts client's IP address from request. This is not the safest solution,
+     since client may change headers.
 
     :param ZPublisher.HTTPRequest request:
     :return string:
@@ -441,42 +460,43 @@ def extract_ip_address_from_request(request=None):
 
     return ip
 
-def get_ip_addresses_whitelist(request=None):
-    """
-    Gets IP addresses white list.
 
-    :param ZPublisher.HTTPRequest request:
-    :return list:
-    """
-    if not request:
-        request = getRequest()
+def get_whitelist(name='ip_addresses_whitelist'):
+    """ Get the whitelist with the given name
 
+    :param str name: Name of the whitelist
+    :return list: The whitelist
+    """
     settings = get_app_settings()
+    white_list = getattr(settings, name, "")
+    if white_list:
+        # Split into list
+        white_list = white_list.split("\n")
+        # Strip all values
+        white_list = [x.strip() for x in white_list]
+        # Check for empties
+        white_list = [y for y in white_list if y]
+    else:
+        white_list = []
+    return white_list
 
-    ip_addresses_whitelist = settings.ip_addresses_whitelist
 
-    if ip_addresses_whitelist:
-        try:
-            ip_addresses_whitelist = ip_addresses_whitelist.split('\n')
-            ip_addresses_whitelist = [ip_address.strip() for ip_address in ip_addresses_whitelist]
-        except Exception as e:
-            logger.debug(str(e))
-            ip_addresses_whitelist = []
-
-    return ip_addresses_whitelist or []
-
-def is_whitelisted_client(request=None):
+def is_whitelisted_client(request=None, user=None):
     """
     Checks if client's IP address is whitelisted.
 
     :param ZPublisher.HTTPRequest request:
     :return bool:
     """
-    ip_addresses_whitelist = get_ip_addresses_whitelist(request=request)
+    ip_addresses_whitelist = get_whitelist()
+    user_whitelist = get_whitelist("user_whitelist")
 
     ip_address = extract_ip_address_from_request(request=request)
 
     if ip_address in ip_addresses_whitelist:
+        return True
+
+    if user and user.id in user_whitelist:
         return True
 
     return False
@@ -484,7 +504,8 @@ def is_whitelisted_client(request=None):
 
 def send_sms(mobile_number, message):
     """
-    Sends an SMS to the monile number given for mobile number reset confirmation.
+    Sends an SMS to the monile number given for mobile number
+     reset confirmation.
 
     :param string mobile_number:
     :param string message: Message.
@@ -502,20 +523,22 @@ def send_sms(mobile_number, message):
 
     message = translate(message, target_language=language)
     try:
-        sms_client.sms.messages.create(
-            to=mobile_number,
-            from_=settings.twilio_number,
-            body=message.encode('UTF-8')
-            )
+        sms_client.messages.create(
+           to=mobile_number,
+           from_=settings.twilio_number,
+           body=message.encode('UTF-8')
+           )
         return True
     except TwilioException as e:
         # Log in the error_log
         logger.exception(e)
         return False
 
+
 def send_mobile_number_reset_confirmation_code_sms(mobile_number, code):
     """
-    Sends an SMS to the monile number given for mobile number reset confirmation.
+    Sends an SMS to the monile number given for mobile
+     number reset confirmation.
 
     :param string mobile_number:
     :param string code:
@@ -524,9 +547,11 @@ def send_mobile_number_reset_confirmation_code_sms(mobile_number, code):
     message = _("Use this code to confirm your mobile phone reset: ${code}", mapping={'code': code})
     return send_sms(mobile_number, message)
 
+
 def send_login_code_sms(mobile_number, code):
     """
-    Sends an SMS to the monile number given for mobile number reset confirmation.
+    Sends an SMS to the monile number given for mobile
+     number reset confirmation.
 
     :param string mobile_number:
     :param string code:
@@ -535,9 +560,11 @@ def send_login_code_sms(mobile_number, code):
     message = _("Use this code to login: ${code}", mapping={'code': code})
     return send_sms(mobile_number, message)
 
+
 def send_mobile_number_setup_confirmation_code_sms(mobile_number, code):
     """
-    Sends an SMS to the monile number given for mobile number setup confirmation.
+    Sends an SMS to the monile number given for mobile
+     number setup confirmation.
 
     :param string mobile_number:
     :param string code:
@@ -545,6 +572,7 @@ def send_mobile_number_setup_confirmation_code_sms(mobile_number, code):
     """
     message = _("Use this code to confirm your mobile phone setup: ${code}", mapping={'code': code})
     return send_sms(mobile_number, message)
+
 
 def get_updated_ips_for_member_properties_update(user, request=None):
     """
@@ -562,6 +590,7 @@ def get_updated_ips_for_member_properties_update(user, request=None):
         updated_ips = "{1},{2}".format(existing_ips, ip, time.time())
     return {'ips': updated_ips}
 
+
 def save_ip(user, request=None):
     """
     Save IP, from which user is logged in, into the system.
@@ -570,10 +599,11 @@ def save_ip(user, request=None):
     :param ZPublisher.HTTPRequest request:
     :return bool: True on success and False on failure.
     """
-    mapping = get_updated_ips_for_member_properties_update(user=user, request=request)
+    mapping = get_updated_ips_for_member_properties_update(
+        user=user, request=request)
 
     try:
         user.setMemberProperties(mapping=mapping)
         return True
-    except Exception as e:
+    except Exception:
         return False
