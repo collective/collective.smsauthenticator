@@ -61,7 +61,7 @@ class ResetMobileNumberForm(form.SchemaForm):
     description = _(u"You have received (or will shortly receive) an SMS with an verification code.\
         <br/>After successfully submitting this form, you will be automatically logged in.")
     css_class = "enableAutoFocus"
-    
+
     def action(self):
         return "{0}?{1}".format(
             self.request.getURL(),
@@ -88,9 +88,9 @@ class ResetMobileNumberForm(form.SchemaForm):
         user = api.user.get(username=username)
 
         if not user:
-            reason = _("User not found {0}.".format(username))
+            reason = _("User not found {0}.").format(username)
             IStatusMessage(self.request).addStatusMessage(
-                _("(Re)setting of the mobile number failed! {0}".format(reason)),
+                _("(Re)setting of the mobile number failed! {0}").format(reason),
                 'error'
                 )
             return
@@ -107,9 +107,8 @@ class ResetMobileNumberForm(form.SchemaForm):
                 if mobile_number_reset_token != signature_token:
                     reason = _("Invalid mobile number reset token.")
                     IStatusMessage(self.request).addStatusMessage(
-                        _("(Re)setting of the mobile number failed! {0}".format(reason)),
-                        'error'
-                        )
+                        _("(Re)setting of the mobile number failed! {0}").format(reason),
+                        'error')
                     return
 
                 user.setMemberProperties(
@@ -139,7 +138,7 @@ class ResetMobileNumberForm(form.SchemaForm):
             reason = _("Invalid token or token expired.")
 
         if reason is not None:
-            IStatusMessage(self.request).addStatusMessage(_("Setup failed! {0}".format(reason)), 'error')
+            IStatusMessage(self.request).addStatusMessage(_("Setup failed! {0}").format(reason), 'error')
 
     def updateFields(self, *args, **kwargs):
         """

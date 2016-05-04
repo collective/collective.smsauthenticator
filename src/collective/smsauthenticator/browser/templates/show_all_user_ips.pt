@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="context/prefs_main_template/macros/master"
-      i18n:domain="plone"
+      i18n:domain="collective.smsauthenticator"
       define="sl 1;;ajax_load 1"
       >
 
@@ -12,7 +12,7 @@
                   ips view/get_all_ips;
                   settings view/get_app_links"
                   >
-            <a id="setup-link" tal:attributes="href settings/settings_url" tal:content="settings/settings_text">
+            <a id="setup-link" tal:attributes="href settings/settings_url" tal:content="settings/settings_text" i18n:translate="">
                 SMS Authenticator configuration
             </a>
             <h1 class="documentFirstHeading" i18n:translate="">SMS Authenticator</h1>

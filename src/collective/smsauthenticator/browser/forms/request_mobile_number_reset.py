@@ -52,7 +52,7 @@ class IRequestMobileNumberResetForm(form.Schema):
     )
     form.mode(note='display')
     note = TextLine(
-            title=u"Important note",
+            title=_(u"Important note"),
             default=u"",
             readonly=True,
             required=False,
@@ -71,7 +71,7 @@ class RequestMobileNumberResetForm(form.SchemaForm):
     label = _("Request to (re)set the mobile number")
     description = _(u"Use the form below to (re)set your mobile phone number.")
     css_class = "enableAutoFocus"
-    
+
     @button.buttonAndHandler(_('Submit'))
     def handleSubmit(self, action):
         data, errors = self.extractData()
@@ -152,7 +152,7 @@ class RequestMobileNumberResetForm(form.SchemaForm):
                     mail_text = mail_text.format(mobile_number_reset_url=signed_url)
 
                     host.send(
-                        mail_text,
+                        mail_text.encode('UTF-8'),
                         immediate = True,
                         msg_type = 'text/html'
                         )
@@ -172,7 +172,7 @@ class RequestMobileNumberResetForm(form.SchemaForm):
 
         if reason is not None:
             IStatusMessage(self.request).addStatusMessage(
-                _("Request for mobile number reset is failed! {0}".format(reason)),
+                _("Request for mobile number reset is failed! {0}").format(reason),
                 'error'
                 )
 

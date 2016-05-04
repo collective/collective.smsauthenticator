@@ -17,6 +17,7 @@ from uuid import uuid4
 from zope.component import getUtility
 from zope.globalrequest import getRequest
 from zope.i18nmessageid import MessageFactory
+from zope.i18n import translate
 
 import logging
 import rebus
@@ -515,14 +516,17 @@ def send_sms(mobile_number, message):
     sms_client = TwilioRestClient(settings.twilio_account_sid,
                                   settings.twilio_auth_token)
 
+    language = api.portal.get_default_language()
+    user = api.user.get_current()
+    if user.getProperty('language'):
+        language = user.getProperty('language')
+
+    message = translate(message, target_language=language)
     try:
-        # If running in development, also log the sms
-        if DevelopmentMode:
-            logger.debug("Sending SMS: {0}".format(message))
         sms_client.messages.create(
            to=mobile_number,
            from_=settings.twilio_number,
-           body=message
+           body=message.encode('UTF-8')
            )
         return True
     except TwilioException as e:
@@ -540,8 +544,7 @@ def send_mobile_number_reset_confirmation_code_sms(mobile_number, code):
     :param string code:
     :return bool: True on success and False on failure.
     """
-    message = _("Use this code to confirm your mobile phone reset: {0}".format(
-        code))
+    message = _("Use this code to confirm your mobile phone reset: ${code}", mapping={'code': code})
     return send_sms(mobile_number, message)
 
 
@@ -554,7 +557,7 @@ def send_login_code_sms(mobile_number, code):
     :param string code:
     :return bool: True on success and False on failure.
     """
-    message = _("Use this code to login: {0}".format(code))
+    message = _("Use this code to login: ${code}", mapping={'code': code})
     return send_sms(mobile_number, message)
 
 
@@ -567,8 +570,7 @@ def send_mobile_number_setup_confirmation_code_sms(mobile_number, code):
     :param string code:
     :return bool: True on success and False on failure.
     """
-    message = _("Use this code to confirm your mobile phone setup: {0}".format(
-        code))
+    message = _("Use this code to confirm your mobile phone setup: ${code}", mapping={'code': code})
     return send_sms(mobile_number, message)
 
 

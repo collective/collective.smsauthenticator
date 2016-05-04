@@ -1,12 +1,15 @@
-<tal:root define="lt string:&lt;;
-                  gt string:&gt;;
-                  dummy python:request.RESPONSE.setHeader('Content-Type', 'text/plain;; charset=%s' % options['charset']);
-                  member python:options['member'];"
+<tal:root
+    i18n:domain="collective.smsauthenticator"
+    define="lt string:&lt;;
+            gt string:&gt;;
+            dummy python:request.RESPONSE.setHeader('Content-Type', 'text/plain;; charset=%s' % options['charset']);
+             member python:options['member'];"
 >From: "<span tal:replace="python:here.email_from_name" />" <span tal:replace="structure lt"/><span tal:replace="python:here.email_from_address" /><span tal:replace="structure gt"/>
 To: <span tal:replace="python:member.getProperty('email')" />
-Subject: <span i18n:domain="collective.smsauthenticator" i18n:translate="" tal:omit-tag="">Request to reset the SMS Authenticator mobile number</span>
+Subject: <span i18n:translate="" tal:omit-tag="">Request to reset the SMS Authenticator mobile number</span>
 Content-Type: text/plain; charset=<span tal:replace="python:options['charset']" />
-Dear <span tal:replace="member/getUserName" />:
+<p i18n:translate="" tal:omit-tag="">Dear <span i18n:name="username" tal:replace="member/getUserName" />:
 You have requested to reset your SMS Authenticator mobile number.
-Click <a href="{mobile_number_reset_url}">here</a> to reset your mobile number.
+
+Click on this link {mobile_number_reset_url} to reset your mobile number.</p>
 </tal:root>
