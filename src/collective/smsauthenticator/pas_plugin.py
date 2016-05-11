@@ -87,6 +87,8 @@ class SMSAuthenticatorPlugin(BasePlugin):
 
         two_step_verification_enabled = user.getProperty(
             'enable_two_step_verification')
+        logger.info("User: {0}  Two factor: {1}".format(
+            login, two_step_verification_enabled))
 
         if two_step_verification_enabled:
             # First see, if the password is correct.
@@ -103,8 +105,10 @@ class SMSAuthenticatorPlugin(BasePlugin):
             # Not logged in, we want the user to be authorized before
             # we do our part
             if authorized is None:
+                logger.info("Not authorized User: {0}".format(login))
                 return None
             if is_whitelisted_client(request=self.REQUEST, user=user):
+                logger.info("User: {0} is white listed!".format(login))
                 return None
 
             # Setting the data in the session doesn't seem to work. That's
@@ -154,6 +158,8 @@ class SMSAuthenticatorPlugin(BasePlugin):
                 code=mobile_number_authentication_code
                 )
 
+            logger.info("Sent sms: {0}  user: {1}  code: {2}".format(
+                sms_sent, login, mobile_number_authentication_code))
             if sms_sent:
                 # Save the `signature` value to the `mobile_number_reset_token`
                 user.setMemberProperties(
