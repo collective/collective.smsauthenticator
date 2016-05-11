@@ -54,7 +54,7 @@ setup(
     install_requires = [
         'setuptools',
         # -*- Extra requirements: -*-
-        'plone.api>=1.1.0',
+        'plone.api>=1.5',
         'plone.directives.form>=1.1',
         'ska>=1.4.2',
         'rebus>=0.2',
