@@ -3,6 +3,8 @@ Changelog
 
 0.3.2 (unreleased)
 ------------------------------------------------
+- Add add defaultFactory to sync enable_two_step_verification with settings.globally_enabled
+  [pcdummy]
 - Expand the uninstall functionality with proper removal of persisent objects [puittenbroek]
 - Better error logging [puittenbroek]
 - Don't logout user when doing a POST [puittenbroek]
@@ -26,7 +28,7 @@ Changelog
 0.2.9 (2014-10-03)
 ------------------------------------------------
 - Fix: CL adduser fails due to plone.api, but adduser adds as a Zope account,
-  which doesn't need the twofactor properties. We shortcut the subscriber if 
+  which doesn't need the twofactor properties. We shortcut the subscriber if
   it's a Zope account being added. See plone.api docs for issue with 'scripts':
   http://docs.plone.org/external/plone.api/docs/api/exceptions.html#plone.api.exc.CannotGetPortalError
   [puittenbroek]
@@ -34,7 +36,7 @@ Changelog
 0.2.8 (2014-07-07)
 ------------------------------------------------
 
-- Use source_users IAutheticationPlugin for password check to prevent 
+- Use source_users IAutheticationPlugin for password check to prevent
   recursive loop [puittenbroek]
 - Better return values, we always return None in our pas plugin [puittenbroek]
 - Add 'enableAutoFocus' forms to enable auto focus [puittenbroek]

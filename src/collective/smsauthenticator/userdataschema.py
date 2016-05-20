@@ -13,6 +13,10 @@ from plone.app.users.browser.personalpreferences import UserDataPanel
 from Products.PluggableAuthService.interfaces.authservice import IBasicUser
 from Products.PluggableAuthService.interfaces.events import IPrincipalCreatedEvent
 from Products.PlonePAS.plugins.ufactory import PloneUser
+
+from collective.smsauthenticator.helpers import get_app_settings
+
+
 logger = logging.getLogger("collective.smsauthenticator")
 
 _ = MessageFactory('collective.smsauthenticator')
@@ -46,6 +50,15 @@ class UserDataSchemaProvider(object):
         return IEnhancedUserDataSchema
 
 
+def verification_default_enabled():
+    """ A helper function for the IEnhancedUserDataSchema below.
+        It returns the default for "enable_two_step_verification"
+        which is just the setting "globaly_enabled".
+    """
+    settings = get_app_settings()
+    return settings.globally_enabled
+
+
 class IEnhancedUserDataSchema(IUserDataSchema):
     """
     Extended user profile.
@@ -68,7 +81,8 @@ class IEnhancedUserDataSchema(IUserDataSchema):
                       <a href='@@setup-mobile-number'>here</a> to set it up or\
                       <a href='@@disable-two-step-verification'>here</a> to disable it."""
             ),
-        required=False
+        required=False,
+        defaultFactory=verification_default_enabled
         )
 
     mobile_number = TextLine(
