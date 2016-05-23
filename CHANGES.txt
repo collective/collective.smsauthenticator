@@ -3,8 +3,9 @@ Changelog
 
 0.3.2 (unreleased)
 ------------------------------------------------
-- Add add defaultFactory to sync enable_two_step_verification with settings.globally_enabled
-  [pcdummy]
+- Set the default value of `enable_two_step_verification` for new users to the registry
+  setting `ISMSAuthenticatorSettings.globally_enabled` (see issue #15)
+  [pcdummy, fRiSi]
 - Expand the uninstall functionality with proper removal of persisent objects [puittenbroek]
 - Better error logging [puittenbroek]
 - Don't logout user when doing a POST [puittenbroek]
