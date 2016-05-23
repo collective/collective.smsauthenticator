@@ -47,9 +47,9 @@ class UserDataSchemaProvider(object):
 
 
 def verification_default_enabled():
-    """ A helper function for the IEnhancedUserDataSchema below.
-        It returns the default for "enable_two_step_verification"
-        which is just the setting "globaly_enabled".
+    """
+    Returns the value of `ISMSAuthenticatorSettings.globally_enabled`.
+    Used as default value for `IEnhancedUserDataSchema.enable_two_step_verification`.
     """
     settings = get_app_settings()
     return settings.globally_enabled
@@ -78,7 +78,7 @@ class IEnhancedUserDataSchema(IUserDataSchema):
                       <a href='@@disable-two-step-verification'>here</a> to disable it."""
             ),
         required=False,
-        defaultFactory=verification_default_enabled
+        defaultFactory=verification_default_enabled,
         )
 
     mobile_number = TextLine(
