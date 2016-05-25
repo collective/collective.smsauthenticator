@@ -242,10 +242,12 @@ Authors & Copyright
 ===================
 Copyright (C) 2014 `Goldmund, Wyldebeast & Wunderliebe <http://www.goldmund-wyldebeast-wunderliebe.nl/>`_.
 
-Authors listed in alphabetic order (by name):
+Authors are listed in alphabetic order (by name):
 
-- Artur Barseghyan
-- Peter Uittenbroek
+- Artur Barseghyan [barseghyanartur]
+- Harald Friessnegger[frisi]
+- Rene Jochum [pcdummy]
+- Peter Uittenbroek [puittenbroek]
 
 TODOs and Roadmap
 =================
