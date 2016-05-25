@@ -1,7 +1,7 @@
 Changelog
 ================================================
 
-0.3.2 (unreleased)
+0.3.2 (2016-05-25)
 ------------------------------------------------
 - Set the default value of `enable_two_step_verification` for new users to the registry
   setting `ISMSAuthenticatorSettings.globally_enabled` (see issue #15)
