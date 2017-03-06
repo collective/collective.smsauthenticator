@@ -53,7 +53,7 @@ if next:
     else:
         state.set(status='external')
 
-if member and not member.getProperty('enable_two_factor_authentication'):
+if member and not member.getProperty('enable_two_step_verification'):
     # If javascript is not enabled, it is possible that cookies are not enabled.
     # If cookies aren't enabled, the redirect will log the user out, and confusion
     # may arise.  Redirect only if we know for sure that cookies are enabled.
