@@ -1,7 +1,7 @@
 Changelog
 ================================================
 
-dev
+0.3.3 (2017-03-10)
 ------------------------------------------------
 - use the correct memberdata property in the login-formcontroller-script.
   (this used to work on a plone 4.3.9 portal, but broke the login process on 4.3.11) [fRiSi]

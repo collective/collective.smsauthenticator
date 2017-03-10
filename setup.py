@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.3.3dev0'
+version = '0.3.3'
 
 try:
     readme = open('README.rst').read()
