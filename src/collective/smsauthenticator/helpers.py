@@ -3,14 +3,16 @@ The helper module contains various methods for api security
 """
 from collective.smsauthenticator.browser.controlpanel\
     import ISMSAuthenticatorSettings
-from Globals import DevelopmentMode
 from hashlib import sha1
 from plone import api
 from plone.registry.interfaces import IRegistry
 from random import randint
+from requests.exceptions import RequestException
 from ska import sign_url, validate_signed_request_data
 from twilio.rest import TwilioRestClient
 from twilio.rest.exceptions import TwilioRestException as TwilioException
+from messagebird import Client as MessagebirdClient
+from messagebird.client import ErrorException as MessagebirdException
 from urllib import unquote, quote
 from urlparse import urlparse
 from uuid import uuid4
@@ -371,7 +373,7 @@ def validate_user_data(request, user, use_browser_hash=True):
     validation_result = validate_signed_request_data(
         data=extract_request_data(request),
         secret_key=secret_key
-        )
+    )
     return validation_result
 
 
@@ -427,7 +429,7 @@ def disable_two_step_verification_for_users(users=[]):
                         'mobile_number_reset_code': '',
                         'mobile_number_authentication_code': '',
                     }
-                    )
+                )
         except Exception as e:
             logger.debug(str(e))
 
@@ -503,15 +505,25 @@ def is_whitelisted_client(request=None, user=None):
 
 
 def send_sms(mobile_number, message):
+    settings = get_app_settings()
+    if settings.provider == u'Twilio':
+        return send_twilio_sms(settings, mobile_number, message)
+    elif settings.provider == u'Messagebird':
+        return send_messagebird_sms(settings, mobile_number, message)
+    else:
+        raise Exception("Provider is not defined.")
+
+
+def send_twilio_sms(settings, mobile_number, message):
     """
-    Sends an SMS to the monile number given for mobile number
+    Sends an SMS to the mobile number given for mobile number
      reset confirmation.
 
+    :param object settings:
     :param string mobile_number:
     :param string message: Message.
     :return bool: True on success and False on failure.
     """
-    settings = get_app_settings()
 
     sms_client = TwilioRestClient(settings.twilio_account_sid,
                                   settings.twilio_auth_token)
@@ -524,12 +536,43 @@ def send_sms(mobile_number, message):
     message = translate(message, target_language=language)
     try:
         sms_client.messages.create(
-           to=mobile_number,
-           from_=settings.twilio_number,
-           body=message.encode('UTF-8')
-           )
+            to=mobile_number,
+            from_=settings.twilio_number,
+            body=message.encode('UTF-8')
+        )
         return True
     except TwilioException as e:
+        # Log in the error_log
+        logger.exception(e)
+        return False
+
+
+def send_messagebird_sms(settings, mobile_number, message):
+    """
+    Sends an SMS to the mobile number given for mobile number
+     reset confirmation.
+
+    :param object settings:
+    :param string mobile_number:
+    :param string message: Message.
+    :return bool: True on success and False on failure.
+    """
+    sms_client = MessagebirdClient(settings.message_bird_access_key)
+
+    language = api.portal.get_default_language()
+    user = api.user.get_current()
+    if user.getProperty('language'):
+        language = user.getProperty('language')
+
+    message = translate(message, target_language=language)
+    try:
+        sms_client.message_create(
+            settings.message_bird_sender,
+            mobile_number,
+            message.encode('UTF-8')
+        )
+        return True
+    except (MessagebirdException, RequestException) as e:
         # Log in the error_log
         logger.exception(e)
         return False

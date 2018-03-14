@@ -1,20 +1,24 @@
 from collective.smsauthenticator.browser.helpers import get_app_links
-from plone import api
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.autoform.form import AutoExtensibleForm
 from plone.directives.form import fieldset
 from plone.registry.interfaces import IRegistry
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import form, button
+from z3c.form.interfaces import ActionExecutionError
 from zope.component import getUtility
 from zope.i18nmessageid import MessageFactory
 from zope.interface import Interface
-from zope.schema import TextLine, Bool, Text, Int
+from zope.interface import Invalid
+from zope.schema import TextLine, Bool, Text, Int, Choice
 import logging
 
 logger = logging.getLogger("collective.smsauthenticator")
 
 _ = MessageFactory('collective.smsauthenticator')
+
+TWILIO_FIELDS = ('twilio_number', 'twilio_account_sid', 'twilio_auth_token')
+MESSAGEBIRD_FIELDS = ('message_bird_sender', 'message_bird_access_key')
 
 
 class ISMSAuthenticatorSettings(Interface):
@@ -45,32 +49,58 @@ class ISMSAuthenticatorSettings(Interface):
         default=u'',
     )
 
+    provider = Choice(
+        title=_("Provider"),
+        description=_("The SMS gateway provider"),
+        values=(u'Twilio', u'Messagebird'),
+        default=u'Twilio',
+    )
+
     # Twilio settings
     twilio_number = TextLine(
         title=_("Twilio number"),
         description=_("Enter your Twilio (phone) number."),
-        required=True,
+        required=False,
         default=u'',
     )
 
     twilio_account_sid = TextLine(
         title=_("Twilio AccountSID"),
         description=_("Enter your Twilio AccountSID."),
-        required=True,
+        required=False,
         default=u'',
     )
 
     twilio_auth_token = TextLine(
         title=_("Twilio AuthToken"),
         description=_("Enter your Twilio AuthToken."),
-        required=True,
+        required=False,
         default=u'',
     )
 
     fieldset(
         'twilio',
         label=_("Twilio"),
-        fields=['twilio_number', 'twilio_account_sid', 'twilio_auth_token', ]
+        fields=TWILIO_FIELDS,
+    )
+
+    message_bird_sender = TextLine(
+        title=_("Messagebird sender"),
+        description=_("Name of the sender, that users sees in SMS message."),
+        required=False,
+        default=u'',
+    )
+    message_bird_access_key = TextLine(
+        title=_("Messagebird Access Key"),
+        description=_("Enter your Messagebird Access Key."),
+        required=False,
+        default=u'',
+    )
+
+    fieldset(
+        'message_bird',
+        label=_("Messagebird"),
+        fields=MESSAGEBIRD_FIELDS
     )
 
     # Security settings
@@ -132,12 +162,27 @@ class SMSAuthenticatorSettingsEditForm(AutoExtensibleForm, form.EditForm):
         additional = additional_template(**template_context)
         return res + additional
 
+    def _check_provider_constraints(self, data):
+        # Tried this with an invariant, but
+        # did not get the right data in the param
+        # of the invariant.
+        for provider_name, fields in (
+                (u'Twilio', TWILIO_FIELDS),
+                (u'Messagebird', MESSAGEBIRD_FIELDS)):
+            if data['provider'] == provider_name:
+                for field_name in fields:
+                    if not data[field_name]:
+                        # XXX add name of field i18n
+                        raise ActionExecutionError(
+                            Invalid(_(u'Field is required.')))
+
     @button.buttonAndHandler(_(u"Save"), name='save')
     def handleSave(self, action):
         """
         Update properties of all users.
         """
         data, errors = self.extractData()
+        self._check_provider_constraints(data)
         if errors:
             self.status = self.formErrorsMessage
             return
