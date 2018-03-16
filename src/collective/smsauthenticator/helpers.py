@@ -9,8 +9,8 @@ from plone.registry.interfaces import IRegistry
 from random import randint
 from requests.exceptions import RequestException
 from ska import sign_url, validate_signed_request_data
-from twilio.rest import TwilioRestClient
-from twilio.rest.exceptions import TwilioRestException as TwilioException
+from twilio.rest import Client as TwilioRestClient
+from twilio.base.exceptions import TwilioRestException as TwilioException
 from messagebird import Client as MessagebirdClient
 from messagebird.client import ErrorException as MessagebirdException
 from urllib import unquote, quote

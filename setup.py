@@ -58,7 +58,7 @@ setup(
         'plone.directives.form>=1.1',
         'ska>=1.4.2',
         'rebus>=0.2',
-        'twilio>=5.4.0',
+        'twilio>=6.10.5',
         'messagebird'
     ],
     extras_require = {'test': ['plone.app.testing', 'robotsuite']},
