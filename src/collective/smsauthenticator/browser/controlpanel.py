@@ -166,15 +166,17 @@ class SMSAuthenticatorSettingsEditForm(AutoExtensibleForm, form.EditForm):
         # Tried this with an invariant, but
         # did not get the right data in the param
         # of the invariant.
-        for provider_name, fields in (
-                (u'Twilio', TWILIO_FIELDS),
-                (u'Messagebird', MESSAGEBIRD_FIELDS)):
-            if data['provider'] == provider_name:
-                for field_name in fields:
-                    if not data[field_name]:
-                        # XXX add name of field i18n
-                        raise ActionExecutionError(
-                            Invalid(_(u'Field is required.')))
+        provider_fields_map = dict(((u'Twilio', TWILIO_FIELDS),
+            (u'Messagebird', MESSAGEBIRD_FIELDS)))
+        for field_name in provider_fields_map[data['provider']]:
+            if not data[field_name]:
+                # XXX add name of field i18n
+                raise ActionExecutionError(
+                    Invalid(_(u'Field is required.')))
+            if field_name == 'message_bird_sender':
+                if not (2 < len(data[field_name]) < 12):
+                    raise ActionExecutionError(
+                        Invalid(_(u'Field Messagebird sender between 3 and 11 chars.')))
 
     @button.buttonAndHandler(_(u"Save"), name='save')
     def handleSave(self, action):
