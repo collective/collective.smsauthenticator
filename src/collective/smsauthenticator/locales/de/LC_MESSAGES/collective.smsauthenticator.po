@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-04-13 14:23+0000\n"
+"POT-Creation-Date: 2018-03-16 10:58+0000\n"
 "PO-Revision-Date: 2016-05-03 10:58+0200\n"
 "Last-Translator: Rene Jochum <info@smile4.at>\n"
 "Language-Team: \n"
@@ -69,31 +69,31 @@ msgid "An error occured while sending the SMS to the number specified."
 msgstr ""
 "Während dem Versand der SMS an die spezifizierte Nummer trat ein Fehler auf."
 
-#: ../browser/controlpanel.py:92
+#: ../browser/controlpanel.py:118
 msgid "Authentication token lifetime in seconds."
 msgstr "Authentifizierungstoken Gültigkeitsdauer in Sekunden."
 
-#: ../userdataschema.py:82
+#: ../userdataschema.py:92
 msgid "Automatically generated"
 msgstr "Automatisch generiert"
 
-#: ../userdataschema.py:100
+#: ../userdataschema.py:110
 msgid "Automatically generated each time SMS message is sent"
 msgstr "Jedes mal wenn eine SMS gesendet wird Automatisch generiert."
 
-#: ../userdataschema.py:106
+#: ../userdataschema.py:116
 msgid "Automatically generated each time user logs in"
 msgstr "Jedes mal wenn der Benutzer sich anmeldet automatisch generiert "
 
-#: ../browser/controlpanel.py:166
+#: ../browser/controlpanel.py:211
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ../browser/controlpanel.py:163
+#: ../browser/controlpanel.py:206
 msgid "Changes saved."
 msgstr "Änderungen gespeichert."
 
-#: ../userdataschema.py:93
+#: ../userdataschema.py:103
 msgid "Code to reset the mobile number (sent by SMS)"
 msgstr "Code um die Handynummer zurückzusetzen (Als SMS versand)"
 
@@ -138,7 +138,7 @@ msgstr "2-Faktor Authentifizierung abschalten"
 msgid "Disable two-step verification for all users"
 msgstr "2-Faktor Authentifizierung für alle Benutzer abschalten"
 
-#: ../browser/controlpanel.py:168
+#: ../browser/controlpanel.py:214
 msgid "Edit cancelled."
 msgstr "Bearbeitung abgebrochen."
 
@@ -150,11 +150,11 @@ msgstr "2-Faktor Authentifizierung einschalten"
 msgid "Enable two-step verification for all users"
 msgstr "2-Faktor Authentifizierung für alle Benutzer einschalten"
 
-#: ../userdataschema.py:66
+#: ../userdataschema.py:75
 msgid "Enable two-step verification."
 msgstr "2-Faktor Authentifizierung einschalten."
 
-#: ../userdataschema.py:67
+#: ../userdataschema.py:76
 msgid ""
 "Enable/disable the two-step verification. Click                      <a "
 "href='@@setup-mobile-number'>here</a> to set it up or                      "
@@ -184,15 +184,19 @@ msgstr ""
 msgid "Enter the verification code you received on your mobile phone."
 msgstr "Geben Sie den Verifiezierungscode den Sie per SMS erhalten habe ein."
 
-#: ../browser/controlpanel.py:56
+#: ../browser/controlpanel.py:95
+msgid "Enter your Messagebird Access Key."
+msgstr ""
+
+#: ../browser/controlpanel.py:62
 msgid "Enter your Twilio (phone) number."
 msgstr "Geben Sie Ihre Twilio (Telefon) Nummer ein."
 
-#: ../browser/controlpanel.py:63
+#: ../browser/controlpanel.py:69
 msgid "Enter your Twilio AccountSID."
 msgstr "Geben Sie Ihre Twilio AccountSID ein."
 
-#: ../browser/controlpanel.py:70
+#: ../browser/controlpanel.py:76
 msgid "Enter your Twilio AuthToken."
 msgstr "Geben Sie Ihren Twilio AuthToken ein."
 
@@ -202,14 +206,14 @@ msgstr "Geben Sie die Handynummer für die 2-Faktor Authentifizierung ein."
 
 #: ../browser/forms/request_mobile_number_reset.py:48
 msgid ""
-"Enter your mobile phone number. Use the international format.            <br/"
-">Example Dutch number: +31699555555            <br/>Example International "
-"number: +49234555776"
+"Enter your mobile phone number. Use the international format.            "
+"<br/>Example Dutch number: +31699555555            <br/>Example "
+"International number: +49234555776"
 msgstr ""
-"Geben Sie Ihre Handynummer ein. Benutzen Sie das internationale Format. \t"
-"\t<br/>Als Beispiel: +43664123123123"
+"Geben Sie Ihre Handynummer ein. Benutzen Sie das internationale Format. "
+"\t\t<br/>Als Beispiel: +43664123123123"
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:109
 msgid ""
 "Enter your secret key for the site here. When choosing a secret key, think "
 "of it as some sort of a password."
@@ -221,13 +225,25 @@ msgstr ""
 msgid "Enter your username for verification."
 msgstr "Geben Sie zur Verifizierung Ihren Benutzernamen an."
 
+#: ../browser/controlpanel.py:180
+msgid "Field Messagebird sender has to be between 3 and 11 chars."
+msgstr ""
+
+#: ../browser/controlpanel.py:175
+msgid "Field {0} is required."
+msgstr ""
+
 #: ../browser/disable_two_step_verification.py:23
 #: ../browser/forms/user_setup_mobile_number.py:51
 #: ../browser/forms/user_setup_two_step_verification.py:51
 msgid "Forbidden for anonymous"
 msgstr "Unzulässig für anonyme Benutzer"
 
-#: ../browser/controlpanel.py:32
+#: ../configure.zcml:34
+msgid "Forms for collective.smsauthenticator"
+msgstr ""
+
+#: ../browser/controlpanel.py:30
 msgid "Globally enabled"
 msgstr "Global eingeschaltet"
 
@@ -236,7 +252,7 @@ msgstr "Global eingeschaltet"
 msgid "IP"
 msgstr "IP"
 
-#: ../browser/controlpanel.py:33
+#: ../browser/controlpanel.py:31
 msgid ""
 "If checked, globally enables the two-step verification for all users; "
 "otherwise - each user configures it himself. Note, that unchecking the "
@@ -250,6 +266,10 @@ msgstr ""
 #: ../browser/forms/request_mobile_number_reset.py:55
 msgid "Important note"
 msgstr "Wichtige Notiz"
+
+#: ../profiles.zcml:11
+msgid "Installs the collective.smsauthenticator package"
+msgstr ""
 
 #: ../browser/forms/token.py:105
 msgid "Invalid data. Details: {0}"
@@ -267,7 +287,8 @@ msgstr "Ungültiger Zurücksetzungstoken."
 msgid "Invalid mobile number."
 msgstr "Falsche Handynummer."
 
-#: ../browser/forms/reset_mobile_number.py:138 ../browser/forms/token.py:127
+#: ../browser/forms/reset_mobile_number.py:138
+#: ../browser/forms/token.py:127
 #: ../browser/forms/user_setup_two_step_verification.py:86
 msgid "Invalid token or token expired."
 msgstr "Falscher Token oder der Token ist abgelaufen."
@@ -276,11 +297,11 @@ msgstr "Falscher Token oder der Token ist abgelaufen."
 msgid "Invalid username."
 msgstr "Falscher Benutzername."
 
-#: ../userdataschema.py:99
+#: ../userdataschema.py:109
 msgid "Last authentication code"
 msgstr "Letzter Authentifizierungscode"
 
-#: ../userdataschema.py:105
+#: ../userdataschema.py:115
 msgid "List of IPs user logged from"
 msgstr "Liste mit IPs der aktiven Anmeldungen des Benutzers"
 
@@ -288,18 +309,39 @@ msgstr "Liste mit IPs der aktiven Anmeldungen des Benutzers"
 msgid "Login failed"
 msgstr "Anmeldung fehlgeschlagen"
 
-#: ../browser/controlpanel.py:49
-msgid "Main"
+#: ../browser/controlpanel.py:102
+msgid "Messagebird"
+msgstr ""
+
+#: ../browser/controlpanel.py:94
+msgid "Messagebird Access Key"
+msgstr ""
+
+#: ../browser/controlpanel.py:88
+msgid "Messagebird sender"
 msgstr ""
 
 #: ../browser/forms/request_mobile_number_reset.py:47
-#: ../browser/forms/user_setup_mobile_number.py:30 ../userdataschema.py:75
+#: ../browser/forms/user_setup_mobile_number.py:30
+#: ../userdataschema.py:85
 msgid "Mobile number"
 msgstr "Handynummer"
+
+#: ../browser/controlpanel.py:89
+msgid "Name of the sender, that users sees in SMS message."
+msgstr ""
+
+#: ../browser/controlpanel.py:209
+msgid "No changes were made."
+msgstr ""
 
 #: ../browser/forms/token.py:83
 msgid "No token provided!"
 msgstr "Kein Token angegeben."
+
+#: ../browser/controlpanel.py:53
+msgid "Provider"
+msgstr ""
 
 #: ../browser/forms/request_mobile_number_reset.py:175
 msgid "Request for mobile number reset is failed! {0}"
@@ -319,12 +361,22 @@ msgstr "Die Handynummer für die 2-Faktor Authentifizierung zurücksetzen."
 msgid "Resend SMS"
 msgstr "SMS Erneut senden"
 
-#: ../browser/controlpanel.py:111 ../browser/templates/show_all_user_ips.pt:18
+#: ../browser/controlpanel.py:137
+#: ../browser/templates/show_all_user_ips.pt:18
 #: ../browser/templates/show_unique_user_ips.pt:16
 msgid "SMS Authenticator"
 msgstr "SMS Anmeldung"
 
-#: ../browser/controlpanel.py:112 ../browser/helpers.py:12
+#: ../configure.zcml:34
+msgid "SMS Authenticator Plone"
+msgstr ""
+
+#: ../configure.zcml:42
+msgid "SMS Authenticator Plone Action Uninstall"
+msgstr ""
+
+#: ../browser/controlpanel.py:138
+#: ../browser/helpers.py:12
 msgid "SMS Authenticator configuration"
 msgstr "SMS Anmeldungen Konfiguration"
 
@@ -332,19 +384,19 @@ msgstr "SMS Anmeldungen Konfiguration"
 msgid "SMS verification code"
 msgstr "SMS Verifizierungscode"
 
-#: ../browser/controlpanel.py:136
+#: ../browser/controlpanel.py:182
 msgid "Save"
 msgstr "Speichern"
 
-#: ../browser/controlpanel.py:83
+#: ../browser/controlpanel.py:108
 msgid "Secret Key"
 msgstr "Geheimer Schlüssel"
 
-#: ../userdataschema.py:81
+#: ../userdataschema.py:91
 msgid "Secret key"
 msgstr "Geheimer Schlüssel"
 
-#: ../browser/controlpanel.py:99
+#: ../browser/controlpanel.py:125
 msgid "Security"
 msgstr "Sicherheit"
 
@@ -374,6 +426,10 @@ msgstr "Eindeutige Benutzer IPs anzeigen"
 msgid "Submit"
 msgstr "Abschicken"
 
+#: ../browser/controlpanel.py:54
+msgid "The SMS gateway provider"
+msgstr ""
+
 #: ../browser/forms/user_setup_mobile_number.py:44
 msgid ""
 "To setup two-step verification you need to enter your mobile phone numberto "
@@ -382,27 +438,27 @@ msgstr ""
 "Um die 2-Faktor Authentifizierung einzurichten müssen Sie Ihre Handynummer "
 "eingegeben zu welcher Sie SMS Nachrichten mit Anmeldungscodes erhalten.‪"
 
-#: ../browser/controlpanel.py:91
+#: ../browser/controlpanel.py:117
 msgid "Token lifetime"
 msgstr "Token Lebenszeit"
 
-#: ../userdataschema.py:87
+#: ../userdataschema.py:97
 msgid "Token to reset the mobile number"
 msgstr "Token um die Handynummer zurückzusetzen"
 
-#: ../browser/controlpanel.py:77
+#: ../browser/controlpanel.py:83
 msgid "Twilio"
 msgstr "Twilio"
 
-#: ../browser/controlpanel.py:62
+#: ../browser/controlpanel.py:68
 msgid "Twilio AccountSID"
 msgstr "Twilio \"AccountSID\""
 
-#: ../browser/controlpanel.py:69
+#: ../browser/controlpanel.py:75
 msgid "Twilio AuthToken"
 msgstr "Twilio \"AuthToken\""
 
-#: ../browser/controlpanel.py:55
+#: ../browser/controlpanel.py:61
 msgid "Twilio number"
 msgstr "Twilio Nummer"
 
@@ -410,7 +466,7 @@ msgstr "Twilio Nummer"
 msgid "Two-step verification"
 msgstr "2-Faktor Authentifizierung"
 
-#: ../pas_plugin.py:130
+#: ../pas_plugin.py:138
 msgid ""
 "Two-step verification is enabled for your account, but you haven't specified "
 "a mobile number yet! In order to be able to log in, you have to go through "
@@ -426,13 +482,25 @@ msgstr ""
 "Die 2-Faktor Authentifizierung wurde für Ihren Account erfolgreich "
 "eingeschaltet."
 
-#: ../browser/controlpanel.py:41
+#: ../browser/controlpanel.py:39
 msgid ""
 "Two-step verification will be ommit for users that log in from white listed "
 "addresses."
 msgstr ""
 "Die 2-Faktor Authentifizierung wird für mit folgenden IP Adressen "
 "abgeschaltet."
+
+#: ../browser/controlpanel.py:46
+msgid "Two-step verification will be ommited for users in this list."
+msgstr ""
+
+#: ../configure.zcml:42
+msgid "Uninstall Postlogin Action"
+msgstr ""
+
+#: ../profiles.zcml:19
+msgid "Uninstalls the collective.smsauthenticator package"
+msgstr ""
 
 #: ../browser/templates/show_unique_user_ips.pt:19
 msgid "Unique user IPs"
@@ -443,15 +511,15 @@ msgid "Use the form below to (re)set your mobile phone number."
 msgstr ""
 "Benutzen Sie dieses Formular um Ihre Handynummer zu setzen/zurückzusetzen."
 
-#: ../helpers.py:524
+#: ../helpers.py:590
 msgid "Use this code to confirm your mobile phone reset: ${code}"
 msgstr "Benutzen Sie diesen Code um die Änderung zu bestätigen: ${code}"
 
-#: ../helpers.py:546
+#: ../helpers.py:616
 msgid "Use this code to confirm your mobile phone setup: ${code}"
 msgstr "Benutzen Sie diesen Code um die Einrichtung abzuschliessen: ${code}"
 
-#: ../helpers.py:535
+#: ../helpers.py:603
 msgid "Use this code to login: ${code}"
 msgstr "Benutzen Sie diesen Code um sich anzumelden: ${code}"
 
@@ -467,11 +535,12 @@ msgstr "Benutzer {0} nicht gefunden."
 msgid "Username"
 msgstr "Benutzername"
 
-#: ../userdataschema.py:76
+#: ../userdataschema.py:86
 msgid "Users' mobile number"
 msgstr "Die Handynummer des Benutzer's"
 
-#: ../browser/forms/reset_mobile_number.py:71 ../browser/forms/token.py:60
+#: ../browser/forms/reset_mobile_number.py:71
+#: ../browser/forms/token.py:60
 #: ../browser/forms/user_setup_mobile_number.py:48
 msgid "Verify"
 msgstr "Überprüfen"
@@ -480,9 +549,13 @@ msgstr "Überprüfen"
 msgid "Welcome! You are now logged in."
 msgstr "Willkommen! Sie sind nun angemeldet."
 
-#: ../browser/controlpanel.py:40
+#: ../browser/controlpanel.py:38
 msgid "White-listed IP addresses"
 msgstr "IP Adressen ohne 2-Faktor authentifizierung"
+
+#: ../browser/controlpanel.py:45
+msgid "White-listed User id"
+msgstr ""
 
 #: ../browser/forms/reset_mobile_number.py:61
 msgid ""
@@ -490,8 +563,8 @@ msgid ""
 "code.        <br/>After successfully submitting this form, you will be "
 "automatically logged in."
 msgstr ""
-"Sie haben (oder werden in kürze) einen SMS Verifizierungscode erhalten. <br/"
-"> Nachdem Sie dieses Formular abgeschickt haben werden Sie automatisch "
+"Sie haben (oder werden in kürze) einen SMS Verifizierungscode erhalten. "
+"<br/> Nachdem Sie dieses Formular abgeschickt haben werden Sie automatisch "
 "eingeloggt."
 
 #: ../browser/forms/reset_mobile_number.py:124
@@ -501,7 +574,8 @@ msgid ""
 msgstr "Sie haben die Handynummer erfolgreich gesetzt."
 
 #: ../browser/disable_two_step_verification_for_all_users.py:28
-msgid "You have successfully disabled the two-step verification for all users."
+msgid ""
+"You have successfully disabled the two-step verification for all users."
 msgstr ""
 "Sie haben die 2-Faktor Authentifizierung erfolgreich für alle Benutzer "
 "abgeschaltet."
@@ -530,11 +604,20 @@ msgstr ""
 msgid "Your SMS has just been resent."
 msgstr "Ihr SMS wurde erneut verschickt."
 
+#: ../profiles.zcml:11
+msgid "collective.smsauthenticator"
+msgstr ""
+
+#: ../profiles.zcml:19
+msgid "collective.smsauthenticator uninstall"
+msgstr ""
+
 #. Default: "Enter the login code sent to your mobile number\nIf you have somehow lost your mobile number, request a reset\n<a href='${absolute_url}/@@request-mobile-number-reset'>here</a>.\nIf you didn't receive an SMS message, resend it by clicking\nthe Resend SMS button below."
 #: ../browser/forms/token.py:208
 msgid "token_field_description"
 msgstr ""
 "Geben Sie den Anmeldungscode den Sie per SMS erhalten haben ein. Wenn Sie "
-"Ihre Handynummer verloren haben klicken Sie bitte <a href='${absolute_url}/"
-"@@request-mobile-number-reset'>hier</a>. Wenn Sie keine SMS erhalten haben "
-"klicken Sie bitte auf den \"SMS Erneut senden\" Knopf unten."
+"Ihre Handynummer verloren haben klicken Sie bitte <a "
+"href='${absolute_url}/@@request-mobile-number-reset'>hier</a>. Wenn Sie "
+"keine SMS erhalten haben klicken Sie bitte auf den \"SMS Erneut senden\" "
+"Knopf unten."
