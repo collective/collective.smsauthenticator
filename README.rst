@@ -246,6 +246,7 @@ Authors are listed in alphabetic order (by name):
 
 - Artur Barseghyan [barseghyanartur]
 - Harald Friessnegger[frisi]
+- Jan Murre [JJM]
 - Rene Jochum [pcdummy]
 - Peter Uittenbroek [puittenbroek]
 
