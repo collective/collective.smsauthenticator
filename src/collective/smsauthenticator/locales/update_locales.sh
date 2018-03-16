@@ -25,7 +25,7 @@ done
 
 # Assume i18ndude is installed with buildout
 # and this script is run under src/ folder with two nested namespaces in the package name (like mfabrik.plonezohointegration)
-I18NDUDE=i18ndude
+I18NDUDE=./i18ndude
 
 #
 # Do we need to merge manual PO entries from a file called manual.pot.

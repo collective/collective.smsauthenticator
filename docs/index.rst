@@ -5,7 +5,7 @@ collective.smsauthenticator
 for Plone 4 with use login codes sent by SMS. This app allows users to enable
 the two-step verification for their Plone accounts. A mobile phone capable to
 receive SMS messages is obviously required. Usage of two-step verification is
-optonal, unless site admins have forced it (configurable in app control panel).
+optional, unless site admins have forced it (configurable in app control panel).
 Admins can white-list the IPs, for which the two-step verification would be
 skipped.
 

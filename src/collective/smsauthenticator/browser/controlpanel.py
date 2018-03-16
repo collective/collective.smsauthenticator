@@ -170,13 +170,14 @@ class SMSAuthenticatorSettingsEditForm(AutoExtensibleForm, form.EditForm):
             (u'Messagebird', MESSAGEBIRD_FIELDS)))
         for field_name in provider_fields_map[data['provider']]:
             if not data[field_name]:
-                # XXX add name of field i18n
+                field_title = ISMSAuthenticatorSettings.get(field_name).title
                 raise ActionExecutionError(
-                    Invalid(_(u'Field is required.')))
+                    Invalid(_(u'Field {0} is required.').format(field_title)))
             if field_name == 'message_bird_sender':
                 if not (2 < len(data[field_name]) < 12):
                     raise ActionExecutionError(
-                        Invalid(_(u'Field Messagebird sender between 3 and 11 chars.')))
+                        Invalid(
+                            _(u'Field Messagebird sender has to be between 3 and 11 chars.')))
 
     @button.buttonAndHandler(_(u"Save"), name='save')
     def handleSave(self, action):
