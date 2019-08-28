@@ -1,7 +1,7 @@
 from collective.smsauthenticator.browser.helpers import get_app_links
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.autoform.form import AutoExtensibleForm
-from plone.directives.form import fieldset
+from plone.supermodel.model import fieldset
 from plone.registry.interfaces import IRegistry
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import form, button
@@ -29,22 +29,22 @@ class ISMSAuthenticatorSettings(Interface):
     globally_enabled = Bool(
         title=_("Globally enabled"),
         description=_("If checked, globally enables the two-step verification for all users; "
-                      "otherwise - each user configures it himself. Note, that unchecking the "
+                      "otherwise - each user configures it himself. Note that unchecking the "
                       "checkbox does not disable the two-step verification for all users."),
         required=False,
         default=True,
     )
     ip_addresses_whitelist = Text(
-        title=_("White-listed IP addresses"),
-        description=_("Two-step verification will be ommit for users that log"
-                      " in from white listed addresses."),
+        title=_("Whitelisted IP addresses"),
+        description=_("Two-step verification will be omitted for users that log"
+                      " in from whitelisted addresses."),
         required=False,
         default=u'',
     )
     user_whitelist = Text(
-        title=_("White-listed User id"),
+        title=_("Whitelisted User id"),
         description=_(
-            "Two-step verification will be ommited for users in this list."),
+            "Two-step verification will be omited for users in this list."),
         required=False,
         default=u'',
     )

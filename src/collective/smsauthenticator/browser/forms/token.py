@@ -10,7 +10,8 @@ from zope.i18nmessageid import MessageFactory
 from z3c.form import button, field
 from zope.i18n import translate
 
-from plone.directives import form
+from plone.supermodel.model import Schema
+from plone.autoform.form import AutoExtensibleForm
 from plone import api
 from plone.z3cform.layout import wrap_form
 
@@ -29,7 +30,7 @@ DEBUG = False
 _ = MessageFactory('collective.smsauthenticator')
 from Products.CMFPlone import PloneMessageFactory as __
 
-class ITokenForm(form.Schema):
+class ITokenForm(Schema):
     """
     Interface for the SMS Authenticator Token validation form.
     """
@@ -39,7 +40,7 @@ class ITokenForm(form.Schema):
         required=False)
 
 
-class TokenForm(form.SchemaForm):
+class TokenForm(AutoExtensibleForm):
     """
     Form for the SMS Authenticator Token validation. Any user that has two-step verification enabled,
     uses this form upon logging in.

@@ -12,7 +12,6 @@
 
     <include package="Products.CMFCore" zcml:condition="have plone-41" file="permissions.zcml" />
     <include package="plone.app.registry" />
-    <include package="plone.app.controlpanel" />
 
     <five:registerPackage package="." initialize=".initialize" />
 
@@ -20,9 +19,22 @@
 
     <include package=".browser" />
 
+<!--
     <utility
         provides=".userdataschema.IEnhancedUserDataSchema"
         factory=".userdataschema.UserDataSchemaProvider"
+        />
+-->
+
+    <adapter
+        factory=".userdataschema.CustomizedUserDataPanel"
+        provides="plone.z3cform.fieldsets.interfaces.IFormExtender"
+        />
+
+    <adapter
+        provides=".userdataschema.IEnhancedUserDataSchema"
+        for="plone.app.layout.navigation.interfaces.INavigationRoot"
+        factory=".adapter.EnhancedUserDataPanelAdapter"
         />
 
     <genericsetup:registerProfile

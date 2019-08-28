@@ -3,12 +3,19 @@ from Products.PluggableAuthService.interfaces.authservice import IBasicUser
 from Products.PluggableAuthService.interfaces.events import IPrincipalCreatedEvent
 from collective.smsauthenticator.helpers import get_app_settings
 from plone import api
-from plone.app.users.browser.personalpreferences import UserDataPanel
-from plone.app.users.userdataschema import IUserDataSchema, IUserDataSchemaProvider
+from plone.app.users.browser.userdatapanel import UserDataPanel
+from plone.app.users.browser.register import BaseRegistrationForm
+from plone.app.users.schema import IUserDataSchema #, IUserDataSchemaProvider
+from plone.z3cform.fieldsets import extensible
+from z3c.form.field import Fields
 from zope.component import adapter
+from zope.component import adapts
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
+from zope.interface import Interface
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.schema import Bool, TextLine, Text
+
 
 import logging
 
@@ -17,33 +24,40 @@ logger = logging.getLogger("collective.smsauthenticator")
 
 _ = MessageFactory('collective.smsauthenticator')
 
-class CustomizedUserDataPanel(UserDataPanel):
-    """
-    Customise the user form shown in personal-preferences.
-    """
-    def __init__(self, context, request):
-        super(CustomizedUserDataPanel, self).__init__(context, request)
+#class CustomizedUserDataPanel(UserDataPanel):
+#    """
+#    Customise the user form shown in personal-preferences.
+#    """
+#    def __init__(self, context, request):
+#        super(CustomizedUserDataPanel, self).__init__(context, request)
+#
+#        # Removing certain fields from form
+#        self.form_fields = self.form_fields.omit(
+#            'enable_two_step_verification',
+#            'mobile_number',
+#            'two_step_verification_secret',
+#            'mobile_number_reset_token',
+#            'mobile_number_reset_code',
+#            'mobile_number_authentication_code',
+#            'ips',
+#            # 'authentication_token_valid_until',
+#            )
 
-        # Removing certain fields from form
-        self.form_fields = self.form_fields.omit(
-            'enable_two_step_verification',
-            'mobile_number',
-            'two_step_verification_secret',
-            'mobile_number_reset_token',
-            'mobile_number_reset_code',
-            'mobile_number_authentication_code',
-            'ips',
-            # 'authentication_token_valid_until',
-            )
+class CustomizedUserDataPanel(extensible.FormExtender):
+    adapts(Interface, IDefaultBrowserLayer, UserDataPanel)
+    def update(self):
+        fields = Fields(IEnhancedUserDataSchema)
+        import pdb;pdb.set_trace()
+        self.add(fields)
 
 
-class UserDataSchemaProvider(object):
-    implements(IUserDataSchemaProvider)
-
-    def getSchema(self):
-        """
-        """
-        return IEnhancedUserDataSchema
+#class UserDataSchemaProvider(object):
+#    implements(IUserDataSchemaProvider)
+#
+#    def getSchema(self):
+#        """
+#        """
+#        return IEnhancedUserDataSchema
 
 
 def verification_default_enabled():

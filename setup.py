@@ -55,7 +55,6 @@ setup(
         'setuptools',
         # -*- Extra requirements: -*-
         'plone.api>=1.5',
-        'plone.directives.form>=1.1',
         'ska>=1.4.2',
         'rebus>=0.2',
         'twilio>=6.10.5',

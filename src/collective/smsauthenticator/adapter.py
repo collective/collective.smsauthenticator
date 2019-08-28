@@ -2,8 +2,9 @@ import logging
 
 from zope.interface import Interface, implements
 
-from plone.app.users.browser.personalpreferences import UserDataPanelAdapter
+from plone.app.users.browser.userdatapanel import UserDataPanelAdapter
 from collective.smsauthenticator.helpers import extract_next_url_from_referer
+from collective.smsauthenticator.userdataschema import IEnhancedUserDataSchema
 
 logger = logging.getLogger(__file__)
 
@@ -11,6 +12,8 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
     """
     Adapter for `collective.smsauthenticator.userdataschema.IEnhancedUserDataSchema`.
     """
+    schema = IEnhancedUserDataSchema
+
     # ****************************************************
     # ******* ``enable_two_step_verification`` *******
     # ****************************************************

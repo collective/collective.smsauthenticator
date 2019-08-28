@@ -19,7 +19,8 @@ from zope.i18nmessageid import MessageFactory
 
 from z3c.form import button, field
 
-from plone.directives import form
+from plone.supermodel.model import Schema
+from plone.autoform.form import AutoExtensibleForm
 from plone import api
 from plone.z3cform.layout import wrap_form
 
@@ -33,7 +34,7 @@ logger = logging.getLogger('collective.smsauthenticator')
 _ = MessageFactory('collective.smsauthenticator')
 
 
-class IResetMobileNumberForm(form.Schema):
+class IResetMobileNumberForm(Schema):
     """
     Interface for the SMS Authenticator Reset Mobile Number form.
     """
@@ -44,7 +45,7 @@ class IResetMobileNumberForm(form.Schema):
     )
 
 
-class ResetMobileNumberForm(form.SchemaForm):
+class ResetMobileNumberForm(AutoExtensibleForm):
     """
     Form for the resetting the mobile number.
 

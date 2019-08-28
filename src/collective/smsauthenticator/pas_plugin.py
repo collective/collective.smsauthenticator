@@ -9,7 +9,7 @@ is set to False), then do nothing so that Plone continues logging in the user no
 """
 import logging
 
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 from AccessControl.SecurityInfo import ClassSecurityInfo
 
 from zope.i18nmessageid import MessageFactory

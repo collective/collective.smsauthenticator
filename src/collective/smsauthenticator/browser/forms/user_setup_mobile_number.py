@@ -8,7 +8,8 @@ from zope.i18nmessageid import MessageFactory
 
 from z3c.form import button, field
 
-from plone.directives import form
+from plone.supermodel.model import Schema
+from plone.autoform.form import AutoExtensibleForm
 from plone import api
 from plone.z3cform.layout import wrap_form
 
@@ -22,7 +23,7 @@ logger = logging.getLogger('collective.smsauthenticator')
 _ = MessageFactory('collective.smsauthenticator')
 
 
-class ISetupMobileNumberForm(form.Schema):
+class ISetupMobileNumberForm(Schema):
     """
     Interface for the SMS Authenticator mobile number setup form.
     """
@@ -33,7 +34,7 @@ class ISetupMobileNumberForm(form.Schema):
     )
 
 
-class SetupMobileNumberForm(form.SchemaForm):
+class SetupMobileNumberForm(AutoExtensibleForm):
     """
     Form for the SMS Authenticator setup.
     """
