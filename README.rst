@@ -29,19 +29,19 @@ two-step verification enabled and has a mobile phone.
 From any page follow the "Enable two-step verification" link in the menu (next
 to "Log out").
 
-.. image:: _static/01_menu_enable.png
+.. image:: docs/_static/01_menu_enable.png
     :align: center
 
 If you haven't yet filled in your mobile phone number, you will be requested to
 do so. You will receive immeditely a SMS with confirmation code in.
 
-.. image:: _static/02_setup_mobile_number.png
+.. image:: docs/_static/02_setup_mobile_number.png
     :align: center
 
 When you're done, you get to a page on which you will be requested to enter the
 code received by SMS.
 
-.. image:: _static/03_confirm_mobile_number_and_complete_two_step_verification_setup.png
+.. image:: docs/_static/03_confirm_mobile_number_and_complete_two_step_verification_setup.png
     :align: center
 
 Enter the secret code shown in the "Enter the verification code to activate
@@ -50,7 +50,7 @@ two-step verification" field for confirmation and press the "Verify" button.
 Upon successful confirmation (you should see a message stating that) the
 two-step verification is enabled for your account.
 
-.. image:: _static/04_enable_two_step_verification_confirmation_message.png
+.. image:: docs/_static/04_enable_two_step_verification_confirmation_message.png
     :align: center
 
 Case 2: Two-step verification
@@ -61,7 +61,7 @@ When you log into the Plone site (just using username and password), you would
 see an extra screen on which you are asked to provide the login code, sent to
 your by SMS.
 
-.. image:: _static/05_login_code_form.png
+.. image:: docs/_static/05_login_code_form.png
     :align: center
 
 You should then check your phone for the new SMS message and type in the token
@@ -88,20 +88,20 @@ number will appear in your mailbox shortly. Having clicked on the link to reset
 the mobile number, would bring your to a page where you can enter the
 verification code.
 
-.. image:: _static/06_request_to_reset_mobile_number.png
+.. image:: docs/_static/06_request_to_reset_mobile_number.png
     :align: center
 
 You will receive an SMS with verification code shortly. Enter the code in the
 "Enter the verification code to activate the two-step verification" field.
 
 
-.. image:: _static/07_confirm_mobile_number_reset.png
+.. image:: docs/_static/07_confirm_mobile_number_reset.png
     :align: center
 
 Upon successful confirmation (you should see a message stating that) your
 mobile number is reset.
 
-.. image:: _static/08_mobile_number_reset_confirmation_message.png
+.. image:: docs/_static/08_mobile_number_reset_confirmation_message.png
     :align: center
 
 Case 4: Disabling the two-step verification
@@ -111,12 +111,12 @@ Pre-conditions: User is logged in and has enabled the two-step verification.
 From any page follow the "Disable two-step verification" link in the menu (next
 to "Log out").
 
-.. image:: _static/09_menu_disable.png
+.. image:: docs/_static/09_menu_disable.png
     :align: center
 
 After which you would get a message.
 
-.. image:: _static/10_disable_two_step_verification_confirmation_message.png
+.. image:: docs/_static/10_disable_two_step_verification_confirmation_message.png
     :align: center
 
 Installation
@@ -155,7 +155,7 @@ http://your-plone-site.com/@@sms-authenticator-settings
 Main
 ----
 
-.. image:: _static/11_control_panel_tab_main.png
+.. image:: docs/_static/11_control_panel_tab_main.png
     :align: center
 
 Globally enabled
@@ -180,7 +180,7 @@ Additionals options of the control panel are:
 Twilio
 ------
 
-.. image:: _static/12_control_panel_tab_twilio.png
+.. image:: docs/_static/12_control_panel_tab_twilio.png
     :align: center
 
 Twilio number
@@ -199,7 +199,7 @@ and check the `API Credentials` section.
 Security
 --------
 
-.. image:: _static/13_control_panel_tab_security.png
+.. image:: docs/_static/13_control_panel_tab_security.png
     :align: center
 
 Secret Key
